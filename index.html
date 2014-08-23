@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Generate Web and App icons and PNG favicons</title>
+  <link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+<body id="body">
+  <h1>Web and App icons and PNG favicons</h1>
+  <p>
+    Generate Web and App Icons from a single source image. Ideally SVG, unfortunately
+    generating from SVG does not work in IE somehow.<br />
+    See also <a href="http://realfavicongenerator.net/">realfavicongenerator.net</a>
+  </p>
+
+  <div class="preview">
+    <progress></progress>
+    <canvas width="200" height="200" id="canvas"></canvas>
+  </div>
+
+  <div class="ui">
+    <section class="selection">
+      <h2>Select icons to generate</h2>
+      <section id="selection"></section>
+    </section>
+
+    <section class="input" id="dropzone">
+      <h2>
+        <label for="files">Drop files or click to upload</label>
+      </h2>
+      <input id="files" type="file" class="files" />
+      <label><input id="bg" placeholder="transparent" /> background</label>
+      <!--<label>width <b id="w-value"></b>% <input id="w" type="range" /></label>
+      <label>height <b id="h-value"></b>% <input id="h" type="range" /></label>-->
+    </section>
+  </div>
+
+  <output class="output">
+    <h2>Output <button id="download">Download as ZIP</button></h2>
+    <section id="list"></section>
+  </output>
+
+  <hr />
+
+  <section>
+    <h2>HTML code to embed the icons</h2>
+    <h3>Icons (Favicon, Chrome, Opera Coast, iOS, IE on Windows 8 and 8.1)</h3>
+    <pre>
+      &lt;link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+      &lt;link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+      &lt;link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+      &lt;link rel="icon" type="image/png" href="/favicon-128x128.png" sizes="128x128">
+      &lt;link rel="icon" type="image/png" href="/favicon-196x196.png" sizes="196x196">
+      &lt;link rel="icon" type="image/png" href="/favicon-228x228.png" sizes="228x228">
+
+      &lt;link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+      &lt;link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+      &lt;link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+      &lt;link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+
+      &lt;meta name="msapplication-TileColor" content="#000000">
+      &lt;meta name="msapplication-TileImage" content="/mstile-144x144.png">
+      &lt;meta name="msapplication-config" content="browserconfig.xml" />
+    </pre>
+    <h4>browserconfig.xml for IE Windows 8.1</h4>
+    <pre>
+      &lt;?xml version="1.0" encoding="utf-8" ?>
+      &lt;browserconfig>
+        &lt;msapplication>
+          &lt;tile>
+          &lt;square70x70logo src="/ie-icons/smalltile.png" />
+          &lt;square150x150logo src="/ie-icons/mediumtile.png" />
+          &lt;wide310x150logo src="/ie-icons/widetile.png" />
+          &lt;square310x310logo src="/ie-icons/largetile.png" />
+          &lt;tilecolor>#009900</tilecolor>
+          &lt;/tile>
+        &lt;/msapplication>
+      &lt;/browserconfig>
+    </pre>
+  </section>
+
+  <script src="scripts/tools.js"></script>
+  <script src="scripts/script.js"></script>
+</body>
+</html>
