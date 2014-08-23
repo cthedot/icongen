@@ -11,6 +11,10 @@ Windows and Windows Phone. These icons are generated in "scaled" versions (80, 1
 
 Ideally upload or drop an SVG file to generate all selected icon sets.
 
+
+Demo: http://cthedot.de/icongen/
+
+
 known issues
 ------------
 In IE SVG uploads seem to cause problems when used on a canvas (plus the original SVG size
