@@ -279,15 +279,10 @@
       ctx.fillRect(0, 0, w, h);
     }
 
-    try {
-      ctx.drawImage(
-        img, dimensions.x, dimensions.y, dimensions.w, dimensions.h
-      );
-      addtothumbslist(name, folder);
-    }
-    catch (e) {
-      alert(e)
-    }
+    ctx.drawImage(
+      img, dimensions.x, dimensions.y, dimensions.w, dimensions.h
+    );
+    addtothumbslist(name, folder);
   }
 
   function resize(imagewidth, imageheight, thumbwidth, thumbheight) {
