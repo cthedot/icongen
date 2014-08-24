@@ -9,17 +9,23 @@
     sets: [
       {
         defaultSelected: true,
-        title: 'favicon.png (browsers including Chrome, Coast, etc.)',
+        title: 'favicon.png (browsers including Coast, etc.)',
         sizes: [
           { w: 16, name: 'favicon-16x16.png' },
           { w: 32, name: 'favicon-32x32.png' },
           { w: 48, name: 'favicon-48x48.png' },
           { w: 64, name: 'favicon-64x64.png' },
           { w: 96, name: 'favicon-96x96.png' }, // Google TV?
-          { w: 128, name: 'favicon-128x128.png' }, // Chrome
-          { w: 196, name: 'favicon-196x196.png' }, // Chrome
-          { w: 228, name: 'favicon-228x228.png' }, // Opera Coast
-          { w: 256, name: 'favicon-256x256.png' }, // Opera Coast
+          { w: 128, name: 'favicon-128x128.png' },
+          { w: 256, name: 'favicon-256x256.png' },
+          { w: 228, name: 'coast-228x228.png' }, // Opera Coast
+        ]
+      }, {
+        defaultSelected: true,
+        title: 'Android Homescreen (incl. Chrome)',
+        sizes: [
+          { w: 128, name: 'android-128x128.png' },
+          { w: 196, name: 'android-196x196.png' },
         ]
       }, {
         defaultSelected: true,
@@ -52,7 +58,7 @@
         sizes: [
           { 
             name: 'icon-%s.png',
-            scales: { 128: { w: 128 }, 512: { w: 512 } }
+            scales: { 60: { w: 60 }, 90: { w: 90 }, 128: { w: 128 }, 512: { w: 512 } }
           }
         ]
       }, {
