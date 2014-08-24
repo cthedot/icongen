@@ -9,23 +9,17 @@
     sets: [
       {
         defaultSelected: true,
-        title: 'favicon.png (please build a fallback favicon.ico too!)',
+        title: 'favicon.png (browsers including Chrome, Coast, etc.)',
         sizes: [
           { w: 16, name: 'favicon-16x16.png' },
           { w: 32, name: 'favicon-32x32.png' },
+          { w: 48, name: 'favicon-48x48.png' },
+          { w: 64, name: 'favicon-64x64.png' },
           { w: 96, name: 'favicon-96x96.png' }, // Google TV?
           { w: 128, name: 'favicon-128x128.png' }, // Chrome
           { w: 196, name: 'favicon-196x196.png' }, // Chrome
           { w: 228, name: 'favicon-228x228.png' }, // Opera Coast
-        ]
-      }, {
-        defaultSelected: true,
-        title: 'iOS 7',
-        sizes: [
-          { w: 60, name: 'apple-touch-icon-60x60.png' },
-          { w: 120, name: 'apple-touch-icon-120x120.png' },
-          { w: 76, name: 'apple-touch-icon-76x76.png' },
-          { w: 152, name: 'apple-touch-icon-152x152.png' },
+          { w: 256, name: 'favicon-256x256.png' }, // Opera Coast
         ]
       }, {
         defaultSelected: true,
@@ -35,8 +29,8 @@
         ]
       }, {
         defaultSelected: true,
-        title: 'IE on Windows 8.1',
-        folder: 'ie-icons',
+        title: 'IE on Windows 8.1 (with browserconfig.xml)',
+        folder: 'ie-browserconfig',
         sizes: [
           { w: 128, name: 'tile70x70.png' },
           { w: 270, name: 'tile150x150.png' },
@@ -44,13 +38,27 @@
           { w: 558, name: 'tile310x310.png' },
         ]
       }, {
-        title: 'WINDOWS Universal Store App',
-        folder: 'Shared',
+        defaultSelected: true,
+        title: 'iOS Safari',
         sizes: [
-          {
-            name: 'Square70x70.scale-%s.png',
-            scales: { 80: { w: 56 }, 100: { w: 70 }, 140: { w: 98 }, 180: { w: 126 } }
-          },
+          { w: 60, name: 'apple-touch-icon-60x60.png' },
+          { w: 120, name: 'apple-touch-icon-120x120.png' },
+          { w: 76, name: 'apple-touch-icon-76x76.png' },
+          { w: 152, name: 'apple-touch-icon-152x152.png' },
+        ]
+      }, {
+        title: 'Firefox OS and Apps', // https://developer.mozilla.org/en-US/Apps/Build/Manifest
+        folder: 'FirefoxOS',
+        sizes: [
+          { 
+            name: 'icon-%s.png',
+            scales: { 128: { w: 128 }, 512: { w: 512 } }
+          }
+        ]
+      }, {
+        title: 'Windows Universal Store App - Shared',
+        folder: 'WindowsApp.Shared',
+        sizes: [
           {
             name: 'Square150x150.scale-%s.png',
             scales: { 80: { w: 120 }, 100: { w: 150 }, 140: { w: 210 }, 180: { w: 270 }, 240: { w: 360 } }
@@ -70,8 +78,8 @@
         ]
       },
       {
-        title: 'Windows only - Universal Store App',
-        folder: 'Windows',
+        title: 'Windows Universal Store App - Windows',
+        folder: 'WindowsApp.Windows',
         sizes: [
           {
             name: 'Square70x70.scale-%s.png',
@@ -96,8 +104,8 @@
         ]
       },
       {
-        title: 'Windows Phone only - Universal Store App',
-        folder: 'WindowsPhone',
+        title: 'Windows Universal Store App - Windows Phone',
+        folder: 'WindowsApp.WindowsPhone',
         sizes: [
           {
             name: 'Square71x71.scale-%s.png',
@@ -213,7 +221,7 @@
         var set = settings.sets[index]
         var settitle = document.createElement('h3');
 
-        settitle.textContent = set.title
+        settitle.textContent = set.folder ? set.folder + '/' + set.title : set.title
         list.appendChild(settitle)
 
         set.sizes.forEach(function (size) {

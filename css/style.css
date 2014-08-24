@@ -1,14 +1,41 @@
-﻿body {
-  font: normal 1em 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+﻿* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  font: normal 1em/1.6 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #fff;
   background: #455;
   padding: 0 20px;
   margin: 0 auto;
 }
 
+pre, code {
+  font: normal 0.9em/1.8 Consolas, monospace;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 0.4em;
+}
+pre {
+  padding: 0.9em 1.6em;
+}
 a {
   color: inherit;
+  border-bottom: 1px solid;
   text-decoration: none;
+}
+  a:hover, a:focus {
+    opacity: 0.8;
+    border: none;
+  }
+
+h1, h2 {
+  font-weight: 200;
+}
+
+h3, b {
+  font-weight: 600;
 }
 
 .preview {
@@ -18,13 +45,16 @@ a {
   left: 0;
   width: 100%;
 }
+
   .preview > * {
     display: block;
     margin: 1em auto;
   }
+
   .preview > progress {
     width: 60%;
   }
+
 .working .preview {
   visibility: visible;
 }
@@ -33,22 +63,79 @@ a {
   opacity: 0.5;
 }
 
-.ui {
-  display: table;
-  width: 100%;
-}
-  .ui > * {
-    display: table-cell;
-    padding: 0 20px;
+@media (min-width: 767px) {
+  .ui {
+    display: table;
+    width: 100%;
+    max-width: 70em;
+    margin: 0 auto;
   }
 
-h2 {
-  font-size: 1em;
-  font-weight: bold;
+    .ui > * {
+      display: table-cell;
+      width: 50%;
+    }
+      .ui > *:first-child {
+        padding-right: 50px;
+       
+      }
 }
 
+h3 {
+  font-size: 1em;
+}
+h4 {
+  font-size: 1em;
+  font-weight: 200;
+}
+
+
+.selection label {
+  cursor: pointer;
+  display: block;
+  margin-bottom: 1px;
+}
+
+.selection input[type=checkbox] {
+  position: absolute;
+  left: -100vw;
+}
+
+.selection label span {
+  position: relative;
+  display: block;
+  padding: 0.4em 0.4em 0.4em 2.4em;
+}
+
+  .selection label span:before {
+    border: 1px solid;
+    border-radius: 100%;
+    content: "+";
+    height: 1.2em;
+    top: 0.5em;
+    left: 0.4em;
+    line-height: 1;
+    position: absolute;
+    text-align: center;
+    width: 1.2em;
+  }
+
+.selection label:hover,
+.selection input[type=checkbox]:focus ~ span {
+  opacity: 0.7;
+}
+
+.selection input[type=checkbox]:checked ~ span:before {
+  content: '×';
+}
+
+.selection input[type=checkbox]:checked ~ span {
+  color: #000;
+  background: #fff;
+}
+
+
 .input {
-  xwidth: 200px;
 }
 
   .input label {
@@ -61,19 +148,18 @@ h2 {
   }
 
 .files {
+  background: none;
+  box-shadow: inset 1px 1px 3px 1px rgba(0,0,0,0.7);
   cursor: copy;
-  color: #000;
-  background: #eee;
   min-width: 180px;
+  width: 100%;
   padding: 50px 10px;
-  border: 1px solid;
-  outline: 1px dashed #fff;
-  margin-bottom: 1em;
+  margin-bottom: 1.6em;
 }
+  .files:hover {
+    opacity: 0.7;
+  }
 
-.selection label {
-  display: block;
-}
 
 
 
@@ -83,24 +169,24 @@ canvas {
 
 .output {
   display: block;
-  clear: both;
-  border-top: 1px solid #000;
-  margin-top: 2em;
+  margin-top: 3.2em;
 }
 
   .output h3 {
     padding-top: 1em;
-    border-top: 1px solid;
-    margin-top: 2em;
+    border-top: 1px dashed;
+    margin-top: 3.2em;
   }
+
   .output h4 {
-    margin-top: 2em;
+    margin-top: 1.6em;
   }
 
   .output a {
     display: inline-block;
     font-size: 0.8em;
-    margin-right: 2em;
+    border: none;
+    margin: 0 50px 1.6em 0;
   }
 
   .output img {

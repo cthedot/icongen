@@ -10,9 +10,9 @@
 <body id="body">
   <h1>Web and App icons and PNG favicons</h1>
   <p>
-    Generate Web and App Icons from a single source image. Ideally SVG, unfortunately
-    generating from SVG does not work in IE somehow.<br />
-    See also <a href="http://realfavicongenerator.net/">realfavicongenerator.net</a>
+    Generate Web and App Icons from a single source image locally in your browser.
+    Ideally use an SVG image (does not work in IE somehow yet, JPG/PNG do work though).<br />
+    See also <a href="http://realfavicongenerator.net/">realfavicongenerator.net</a>.
   </p>
 
   <div class="preview">
@@ -24,6 +24,7 @@
     <section class="selection">
       <h2>Select icons to generate</h2>
       <section id="selection"></section>
+      <p>Please add a <code>favicon.<em>ico</em></code> too</p>
     </section>
 
     <section class="input" id="dropzone">
@@ -31,7 +32,7 @@
         <label for="files">Drop files or click to upload</label>
       </h2>
       <input id="files" type="file" class="files" />
-      <label><input id="bg" placeholder="transparent" /> background</label>
+      <label><input id="bg" placeholder="transparent" /> Background color</label>
       <!--<label>width <b id="w-value"></b>% <input id="w" type="range" /></label>
       <label>height <b id="h-value"></b>% <input id="h" type="range" /></label>-->
     </section>
@@ -45,40 +46,45 @@
   <hr />
 
   <section>
-    <h2>HTML code to embed the icons</h2>
-    <h3>Icons (Favicon, Chrome, Opera Coast, iOS, IE on Windows 8 and 8.1)</h3>
+    <h2>Some notes and links about using the icons</h2>
+    <h3>
+      Icons (Favicon, Chrome, Opera Coast, iOS, IE on Windows 8 and 8.1)<br />
+      More info about <a href="http://www.jonathantneal.com/blog/understand-the-favicon/">favicons</a> and
+      <a href="https://mathiasbynens.be/notes/touch-icons">touch icons</a>
+    </h3>
     <pre>
-      &lt;link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
-      &lt;link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
-      &lt;link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
-      &lt;link rel="icon" type="image/png" href="/favicon-128x128.png" sizes="128x128">
-      &lt;link rel="icon" type="image/png" href="/favicon-196x196.png" sizes="196x196">
-      &lt;link rel="icon" type="image/png" href="/favicon-228x228.png" sizes="228x228">
-
-      &lt;link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
-      &lt;link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
-      &lt;link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
-      &lt;link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
-
-      &lt;meta name="msapplication-TileColor" content="#000000">
-      &lt;meta name="msapplication-TileImage" content="/mstile-144x144.png">
-      &lt;meta name="msapplication-config" content="browserconfig.xml" />
-    </pre>
-    <h4>browserconfig.xml for IE Windows 8.1</h4>
+&lt;link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+&lt;link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+&lt;link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+&lt;link rel="icon" type="image/png" href="/favicon-128x128.png" sizes="128x128">
+&lt;link rel="icon" type="image/png" href="/favicon-196x196.png" sizes="196x196">
+&lt;link rel="icon" type="image/png" href="/favicon-228x228.png" sizes="228x228">
+&lt;link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+&lt;link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+&lt;link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+&lt;link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+&lt;meta name="msapplication-TileColor" content="#000000">
+&lt;meta name="msapplication-TileImage" content="/mstile-144x144.png">
+&lt;meta name="msapplication-config" content="/browserconfig.xml" /></pre>
+    <h4><a href="http://msdn.microsoft.com/en-us/library/ie/dn455106%28v=vs.85%29.aspx">browserconfig.xml for IE Windows 8.1 </a></h4>
     <pre>
-      &lt;?xml version="1.0" encoding="utf-8" ?>
-      &lt;browserconfig>
-        &lt;msapplication>
-          &lt;tile>
-          &lt;square70x70logo src="/ie-icons/smalltile.png" />
-          &lt;square150x150logo src="/ie-icons/mediumtile.png" />
-          &lt;wide310x150logo src="/ie-icons/widetile.png" />
-          &lt;square310x310logo src="/ie-icons/largetile.png" />
-          &lt;tilecolor>#009900&lt;/tilecolor>
-          &lt;/tile>
-        &lt;/msapplication>
-      &lt;/browserconfig>
+&lt;?xml version="1.0" encoding="utf-8" ?>
+&lt;browserconfig>
+  &lt;msapplication>
+    &lt;tile>
+    &lt;square70x70logo src="/ie-icons/smalltile.png" />
+    &lt;square150x150logo src="/ie-icons/mediumtile.png" />
+    &lt;wide310x150logo src="/ie-icons/widetile.png" />
+    &lt;square310x310logo src="/ie-icons/largetile.png" />
+    &lt;tilecolor>#009900&lt;/tilecolor>
+    &lt;/tile>
+  &lt;/msapplication>
+&lt;/browserconfig>
     </pre>
+    <h3>Firefox OS and apps</h3>
+    <p>
+      See the <a href="https://developer.mozilla.org/en-US/Apps/Build/Manifest#icons">Firefox docs</a>
+    </p>
   </section>
 
   <script src="scripts/tools.js"></script>
