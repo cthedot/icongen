@@ -221,7 +221,7 @@
         var set = settings.sets[index]
         var settitle = document.createElement('h3');
 
-        settitle.textContent = set.folder ? set.folder + '/' + set.title : set.title
+        settitle.textContent = set.title
         list.appendChild(settitle)
 
         set.sizes.forEach(function (size) {
@@ -230,7 +230,7 @@
 
             var scaletitle = document.createElement('h4');
 
-            scaletitle.textContent = size.name
+            scaletitle.textContent = set.folder ? set.folder + '/' + size.name : size.name
             list.appendChild(scaletitle)
 
             for (var scale in scales) {
