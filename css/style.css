@@ -169,7 +169,7 @@ canvas {
 
 .output {
   display: block;
-  margin-top: 3.2em;
+  margin: 3.2em 0;
 }
 
   .output h3 {
