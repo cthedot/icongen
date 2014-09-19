@@ -49,6 +49,7 @@
         sizes: [
           { w: 60, name: 'apple-touch-icon-60x60.png' },
           { w: 120, name: 'apple-touch-icon-120x120.png' },
+          { w: 180, name: 'apple-touch-icon-180x180.png' },
           { w: 76, name: 'apple-touch-icon-76x76.png' },
           { w: 152, name: 'apple-touch-icon-152x152.png' },
         ]
