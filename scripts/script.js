@@ -1,4 +1,5 @@
 ﻿(function () {
+  "use strict";
 
   var settings = {
     crop: false,
@@ -28,7 +29,6 @@
           { w: 196, name: 'android-196x196.png' },
         ]
       }, {
-        defaultSelected: true,
         title: 'IE on Windows 8.0',
         sizes: [
           { w: 144, name: 'mstile-144x144.png' }
@@ -63,7 +63,7 @@
           }
         ]
       }, {
-        title: 'Windows Universal Store App - Shared',
+        title: 'Windows Store App - Shared',
         folder: 'WindowsApp.Shared',
         sizes: [
           {
@@ -85,7 +85,7 @@
         ]
       },
       {
-        title: 'Windows Universal Store App - Windows',
+        title: 'Windows Store App - Windows',
         folder: 'WindowsApp.Windows',
         sizes: [
           {
@@ -111,7 +111,7 @@
         ]
       },
       {
-        title: 'Windows Universal Store App - Windows Phone',
+        title: 'Windows Store App - Windows Phone',
         folder: 'WindowsApp.WindowsPhone',
         sizes: [
           {
@@ -127,7 +127,50 @@
             scales: { 100: { w: 480, h: 800 }, 140: { w: 672, h: 1120 }, 240: { w: 1152, h: 1920 } }
           },
         ]
-      }
+      },
+      {
+        defaultSelected: true,
+        title: 'Windows 10 Universal App',
+        folder: 'Windows10',
+        sizes: [
+          {
+            name: 'Square71x71Logo.scale-%s.png',
+            scales: { 400: { w: 284 }, 200: { w: 142 }, 100: { w: 71 }, 150: {  w: 107 }, 125: { w: 89 } }
+          },
+          {
+            name: 'Square150x150Logo.scale-%s.png',
+            scales: { 400: { w: 600 }, 200: { w: 300 }, 100: { w: 150 }, 150: {  w: 225 }, 125: { w: 188 } }
+          },
+          {
+            name: 'Wide310x150Logo.scale-%s.png',
+            scales: { 400: { w: 1240, h: 600 }, 200: { w: 620, h: 300 }, 100: { w: 310, h: 150 }, 150: {  w: 465, h: 225 }, 125: { w: 388, h: 188 } }
+          },
+          {
+            name: 'Square310x310Logo.scale-%s.png',
+            scales: { 400: { w: 1240 }, 200: { w: 620 }, 100: { w: 310 }, 150: {  w: 465 }, 125: { w: 388 } }
+          },
+          {
+            name: 'Square44x44Logo.scale-%s.png',
+            scales: { 400: { w: 176 }, 200: { w: 88 }, 100: { w: 44 }, 150: {  w: 66 }, 125: { w: 55 } }
+          },
+          {
+            name: 'Square44x44Logo.targetsize-%s.png',
+            scales: { 256: { w: 256 }, 48: { w: 48 }, 24: { w: 24 }, 16: { w: 16 } }
+          },
+          {
+            name: 'StoreLogo.scale-%s.png',
+            scales: { 400: { w: 200 }, 200: { w: 100 }, 150: {  w: 75 }, 125: { w: 63 }, 100: { w: 50 } }
+          },
+          {
+            name: 'BadgeLogo.scale-%s.png',
+            scales: { 400: { w: 96 }, 200: { w: 48 }, 150: {  w: 36 }, 125: { w: 30 }, 100: { w: 24 } }
+          },
+          {
+            name: 'SplashScreen.scale-%s.png',
+            scales: { 400: { w: 2480, h: 1200 }, 200: { w: 1240, h: 600 }, 150: { w: 930, h: 450 }, 125: { w: 775, h: 375 }, 100: { w: 620, h: 300 } }
+          },
+        ]
+      },
     ]
   }
   var selectedSets = []
@@ -177,7 +220,7 @@
 
   function getFiles(e) {
     e.preventDefault();
-
+    
     list.innerHTML = ''
 
     var files = e.dataTransfer ? e.dataTransfer.files : e.target.files
@@ -186,7 +229,7 @@
 
     if (files.length > 0) {
       var i = 1 // only 1 for now! //files.length;
-      fileslength = i;
+
       while (i--) {
         var file = files[i];
         if (file.type.indexOf('image') === -1) {
@@ -351,12 +394,6 @@
     link.appendChild(textlabel);
 
     list.appendChild(link);
-
-    /*current++;
-    if (current === fileslength) {
-      zipit();
-      s.querySelector('p').innerHTML = 'Drag and drop some images here!';
-    }*/
   }
 
   function clearThumbs(e) {
@@ -373,7 +410,7 @@
 
     if (allimgs) {
       while (allimgs--) {
-        folder = imgs[allimgs].getAttribute('data-folder')
+        var folder = imgs[allimgs].getAttribute('data-folder')
 
         if (folder) {
           if (!(folder in folders)) {
@@ -384,7 +421,6 @@
         else {
           target = zip
         }
-        console.log(folder, target)
 
         target.file(
           imgs[allimgs].getAttribute('data-filename'),
@@ -400,7 +436,7 @@
   }
 
   function init() {
-    bg.value = ''
+    bginput.value = ''
 
     var selection = document.getElementById('selection')
 
