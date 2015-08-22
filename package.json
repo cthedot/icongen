@@ -11,7 +11,10 @@
   "scripts": {
     "css": "pleeease compile",
     "js": "uglifyjs --compress --mangle -o app/scripts/script.min.js -- app/scripts/script.js app/scripts/tools.js",
-    "watch": "parallelshell \"npm run watch:js\" \"npm run watch:css\"",
+    "upload": "node upload.js",
+    "deploy": "dploy",
+    "watch": "parallelshell \"npm run watch:deploy\" \"npm run watch:js\" \"npm run watch:css\"",
+    "watch:deploy": "onchange \"app/**/*.*\" -- npm run upload",
     "watch:css": "onchange \"app/**/*.css\" -- npm run css",
     "watch:js": "onchange \"app/**/*.js\" -- npm run js"
   },
