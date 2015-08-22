@@ -1,0 +1,25 @@
+{
+  "name": "icongen-webapp",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "http://cthedot.de/icongen/",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cthedot/icongen"
+  },
+  "scripts": {
+    "css": "pleeease compile",
+    "js": "uglifyjs --compress --mangle -o app/scripts/script.min.js -- app/scripts/script.js app/scripts/tools.js",
+    "watch": "parallelshell \"npm run watch:js\" \"npm run watch:css\"",
+    "watch:css": "onchange \"app/**/*.css\" -- npm run css",
+    "watch:js": "onchange \"app/**/*.js\" -- npm run js"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "onchange": "^1.1.0",
+    "parallelshell": "^1.2.0",
+    "pleeease": "^3.4.0",
+    "uglifyjs": "^2.4.10"
+  }
+}

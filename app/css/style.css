@@ -1,8 +1,7 @@
 ﻿* {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+
 
 body {
   font: normal 1em/1.6 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -57,6 +56,10 @@ h3, b {
 
 .working .preview {
   visibility: visible;
+}
+
+.ui {
+  transform: 0.2s;
 }
 
 .working .ui {

@@ -366,6 +366,7 @@
   }
 
 
+
   function addtothumbslist(name, folder) {
     var thumb = new Image()
     var url = [] // dummy
@@ -447,7 +448,6 @@
       setBox.setAttribute('value', i)
       setBox.addEventListener('change', function (e) {
         var v = parseInt(e.target.value)
-        var checked = e.target.checked
         var index = selectedSets.indexOf(v)
 
         if (e.target.checked) {
