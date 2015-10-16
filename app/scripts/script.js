@@ -57,7 +57,7 @@
         title: 'Firefox OS and Apps', // https://developer.mozilla.org/en-US/Apps/Build/Manifest
         folder: 'FirefoxOS',
         sizes: [
-          { 
+          {
             name: 'icon-%s.png',
             scales: { 60: { w: 60 }, 90: { w: 90 }, 128: { w: 128 }, 512: { w: 512 } }
           }
@@ -89,7 +89,7 @@
         folder: 'WindowsApp.Windows',
         sizes: [
           {
-            name: 'Square70x70.scale-%s.png',
+            name: 'Store348x172.png',
             scales: { 80: { w: 56 }, 100: { w: 70 }, 140: { w: 98 }, 180: { w: 126 } }
           },
           {
@@ -168,9 +168,25 @@
           {
             name: 'SplashScreen.scale-%s.png',
             scales: { 400: { w: 2480, h: 1200 }, 200: { w: 1240, h: 600 }, 150: { w: 930, h: 450 }, 125: { w: 775, h: 375 }, 100: { w: 620, h: 300 } }
-          },
+          }
         ]
       },
+      {
+        defaultSelected: false,
+        title: 'Windows 10 Universal App Store icons',
+        folder: 'Windows10store',
+        sizes: [
+          { w: 358, h: 173, name: 'Store-358x173.png' },
+          { w: 358, name: 'Store-358x358.png' },
+          // no bg 1000x800!
+          { w: 414, h: 180, name: 'Store-414x180.png' },
+          { w: 414, h: 468, name: 'Store-414x468.png' },
+          { w: 558, name: 'Store-558x558.png' },
+          { w: 558, h: 756, name: 'Store-558x756.png' },
+          { w: 846, h: 468, name: 'Store-846x468.png' },
+          { w: 2400, h: 1200, name: 'Store-2400x1200.png' }
+        ]
+      }
     ]
   }
   var selectedSets = []
@@ -220,7 +236,7 @@
 
   function getFiles(e) {
     e.preventDefault();
-    
+
     list.innerHTML = ''
 
     var files = e.dataTransfer ? e.dataTransfer.files : e.target.files
