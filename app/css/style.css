@@ -4,8 +4,8 @@
 
 body {
   font: normal 1em/1.6 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #fff;
-  background: #455;
+  color: #eee;
+  background: #233;
   padding: 0 20px;
   margin: 0 auto;
 }
@@ -34,6 +34,19 @@ h1, h2 {
 
 h3, b {
   font-weight: 600;
+}
+
+button {
+  color: #c60;
+  background: #fff;
+  border: none;
+  font-size: 1em;
+  font-weight: 600;
+  padding: 0.5em 1em;
+}
+button:hover,
+button:focus {
+  opacity: 0.8;
 }
 
 .preview {
@@ -79,7 +92,7 @@ h3, b {
     }
       .ui > *:first-child {
         padding-right: 50px;
-       
+
       }
 }
 

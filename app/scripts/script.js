@@ -9,34 +9,30 @@
     h: 100,
     sets: [
       {
+        title: 'favicon.png base',
+        description: '16x16 32x32',
         defaultSelected: true,
-        title: 'favicon.png (browsers including Coast, etc.)',
         sizes: [
           { w: 16, name: 'favicon-16x16.png' },
-          { w: 32, name: 'favicon-32x32.png' },
-          { w: 48, name: 'favicon-48x48.png' },
-          { w: 64, name: 'favicon-64x64.png' },
-          { w: 96, name: 'favicon-96x96.png' }, // Google TV?
-          { w: 128, name: 'favicon-128x128.png' },
-          { w: 256, name: 'favicon-256x256.png' },
-          { w: 228, name: 'coast-228x228.png' }, // Opera Coast
+          { w: 32, name: 'favicon-32x32.png' }
         ]
       }, {
+        title: 'Android for manifest.json',
+        description: '36x36(@0.75x) 48x48(@1x) 72x72(@1.5x) 96x96(@2x) 144x144(@3x) 192x192(@4x)',
         defaultSelected: true,
-        title: 'Android Homescreen (incl. Chrome)',
         sizes: [
-          { w: 128, name: 'android-128x128.png' },
-          { w: 196, name: 'android-196x196.png' },
+          { w: 36, name: 'android-36x36.png' },
+          { w: 48, name: 'android-48x48.png' },
+          { w: 72, name: 'android-72x72.png' },
+          { w: 96, name: 'android-96x96.png' },
+          { w: 144, name: 'android-144x144.png' },
+          { w: 192, name: 'android-192x192.png' }
         ]
       }, {
-        title: 'IE on Windows 8.0',
-        sizes: [
-          { w: 144, name: 'mstile-144x144.png' }
-        ]
-      }, {
+        title: 'IE on Windows 8.1/10 for browserconfig.xml',
+        description: '70x70(128x128) 150x150(270x270) 310x150(558x270) 310x310(558x558)',
+        folder: 'browserconfig',
         defaultSelected: true,
-        title: 'IE on Windows 8.1 (with browserconfig.xml)',
-        folder: 'ie-browserconfig',
         sizes: [
           { w: 128, name: 'tile70x70.png' },
           { w: 270, name: 'tile150x150.png' },
@@ -44,93 +40,16 @@
           { w: 558, name: 'tile310x310.png' },
         ]
       }, {
+        title: 'iOS Safari base',
+        description: '180x180(@3x)',
         defaultSelected: true,
-        title: 'iOS Safari',
         sizes: [
-          { w: 60, name: 'apple-touch-icon-60x60.png' },
-          { w: 120, name: 'apple-touch-icon-120x120.png' },
-          { w: 180, name: 'apple-touch-icon-180x180.png' },
-          { w: 76, name: 'apple-touch-icon-76x76.png' },
-          { w: 152, name: 'apple-touch-icon-152x152.png' },
-        ]
-      }, {
-        title: 'Firefox OS and Apps', // https://developer.mozilla.org/en-US/Apps/Build/Manifest
-        folder: 'FirefoxOS',
-        sizes: [
-          {
-            name: 'icon-%s.png',
-            scales: { 60: { w: 60 }, 90: { w: 90 }, 128: { w: 128 }, 512: { w: 512 } }
-          }
-        ]
-      }, {
-        title: 'Windows Store App - Shared',
-        folder: 'WindowsApp.Shared',
-        sizes: [
-          {
-            name: 'Square150x150.scale-%s.png',
-            scales: { 80: { w: 120 }, 100: { w: 150 }, 140: { w: 210 }, 180: { w: 270 }, 240: { w: 360 } }
-          },
-          {
-            name: 'Wide310x150.scale-%s.png',
-            scales: { 80: { w: 248, h: 120 }, 100: { w: 310, h: 150 }, 140: { w: 434, h: 210 }, 180: { w: 558, h: 270 }, 240: { w: 744, h: 360 } }
-          },
-          {
-            name: 'Store.scale-%s.png',
-            scales: { 100: { w: 50 }, 140: { w: 70 }, 180: { w: 90 }, 240: { w: 120 } }
-          },
-          {
-            name: 'Badge.scale-%s.png',
-            scales: { 100: { w: 24 }, 140: { w: 33 }, 180: { w: 43 }, 240: { w: 58 } }
-          },
+          { w: 180, name: 'apple-touch-icon-180x180.png' }
         ]
       },
       {
-        title: 'Windows Store App - Windows',
-        folder: 'WindowsApp.Windows',
-        sizes: [
-          {
-            name: 'Store348x172.png',
-            scales: { 80: { w: 56 }, 100: { w: 70 }, 140: { w: 98 }, 180: { w: 126 } }
-          },
-          {
-            name: 'Square310x310.scale-%s.png',
-            scales: { 80: { w: 248 }, 100: { w: 310 }, 140: { w: 434 }, 180: { w: 558 } }
-          },
-          {
-            name: 'Square30x30.scale-%s.png',
-            scales: { 80: { w: 24 }, 100: { w: 30 }, 140: { w: 42 }, 180: { w: 54 } }
-          },
-          {
-            name: 'Square30x30.targetsize-%s.png',
-            scales: { 16: { w: 16 }, 32: { w: 32 }, 48: { w: 48 }, 256: { w: 256 } }
-          },
-          {
-            name: 'SplashScreen.scale-%s.png',
-            scales: { 100: { w: 620, h: 300 }, 140: { w: 868, h: 420 }, 180: { w: 1116, h: 540 } }
-          },
-        ]
-      },
-      {
-        title: 'Windows Store App - Windows Phone',
-        folder: 'WindowsApp.WindowsPhone',
-        sizes: [
-          {
-            name: 'Square71x71.scale-%s.png',
-            scales: { 100: { w: 71 }, 140: { w: 99 }, 240: { w: 170 } }
-          },
-          {
-            name: 'Square44x44.scale-%s.png',
-            scales: { 100: { w: 44 }, 140: { w: 62 }, 240: { w: 106 } }
-          },
-          {
-            name: 'SplashScreen.scale-%s.png',
-            scales: { 100: { w: 480, h: 800 }, 140: { w: 672, h: 1120 }, 240: { w: 1152, h: 1920 } }
-          },
-        ]
-      },
-      {
-        defaultSelected: true,
-        title: 'Windows 10 Universal App',
+        title: 'Windows 10 UWP Universal App for apps',
+        description: 'tiles, store, badge and splashscreen to be included in the app',
         folder: 'Windows10',
         sizes: [
           {
@@ -172,8 +91,8 @@
         ]
       },
       {
-        defaultSelected: false,
-        title: 'Windows 10 Universal App Store icons',
+        title: 'Windows 10 UWP  for app store submission',
+        description: 'icons for a store submission',
         folder: 'Windows10store',
         sizes: [
           { w: 358, h: 173, name: 'Store-358x173.png' },
@@ -185,6 +104,119 @@
           { w: 558, h: 756, name: 'Store-558x756.png' },
           { w: 846, h: 468, name: 'Store-846x468.png' },
           { w: 2400, h: 1200, name: 'Store-2400x1200.png' }
+        ]
+      },
+      {
+        title: 'favicon.png extended (browsers including Coast, etc.)',
+        description: '48x48 64x64 96x96(Google TV) 128x128(Chrome Webstore) 256x256 228x228(Opera Coast)',
+        sizes: [
+          { w: 48, name: 'favicon-48x48.png' },
+          { w: 64, name: 'favicon-64x64.png' },
+          { w: 96, name: 'favicon-96x96.png' }, // Google TV
+          { w: 128, name: 'favicon-128x128.png' }, // Chrome Webstore
+          { w: 256, name: 'favicon-256x256.png' },
+          { w: 228, name: 'coast-228x228.png' } // Coast
+        ]
+      }, {
+        title: 'Android extended',
+        description: '128x128',
+        sizes: [
+          { w: 128, name: 'android-128x128.png' }
+        ]
+      }, {
+        title: 'Firefox OS and Apps (actually defunct now)',
+        description: 'see https://developer.mozilla.org/en-US/Apps/Build/Manifest',
+        folder: 'FirefoxOS',
+        sizes: [
+          {
+            name: 'icon-%s.png',
+            scales: { 60: { w: 60 }, 90: { w: 90 }, 128: { w: 128 }, 512: { w: 512 } }
+          }
+        ]
+      }, {
+        title: 'IE on Windows 8.0 (old)',
+        description: '144x144',
+        sizes: [
+          { w: 144, name: 'mstile-144x144.png' }
+        ]
+      }, {
+        title: 'iOS Safari extended (mostly not needed)',
+        description: '60x60(iOS6@1x) 76x76(@1x) 120x120(@2x) 152x152(iPad@2x) 167x167(iPadPro) ',
+        sizes: [
+          { w: 120, name: 'apple-touch-icon-120x120.png' },
+          { w: 152, name: 'apple-touch-icon-152x152.png' },
+          { w: 167, name: 'apple-touch-icon-167x167.png' },
+          { w: 60, name: 'apple-touch-icon-60x60.png' },
+          { w: 76, name: 'apple-touch-icon-76x76.png' }
+        ]
+      },
+      {
+        title: 'Windows 8.1 Store App - Shared',
+        folder: 'WindowsApp.Shared',
+        description: 'tiless, store, badge in various sizes and related scalings',
+        sizes: [
+          {
+            name: 'Square150x150.scale-%s.png',
+            scales: { 80: { w: 120 }, 100: { w: 150 }, 140: { w: 210 }, 180: { w: 270 }, 240: { w: 360 } }
+          },
+          {
+            name: 'Wide310x150.scale-%s.png',
+            scales: { 80: { w: 248, h: 120 }, 100: { w: 310, h: 150 }, 140: { w: 434, h: 210 }, 180: { w: 558, h: 270 }, 240: { w: 744, h: 360 } }
+          },
+          {
+            name: 'Store.scale-%s.png',
+            scales: { 100: { w: 50 }, 140: { w: 70 }, 180: { w: 90 }, 240: { w: 120 } }
+          },
+          {
+            name: 'Badge.scale-%s.png',
+            scales: { 100: { w: 24 }, 140: { w: 33 }, 180: { w: 43 }, 240: { w: 58 } }
+          },
+        ]
+      },
+      {
+        title: 'Windows 8.1 Store App - Windows (desktop)',
+        description: 'tiles, store, splashscreen in various sizes and related scalings',
+        folder: 'WindowsApp.Windows',
+        sizes: [
+          {
+            name: 'Store348x172.png',
+            scales: { 80: { w: 56 }, 100: { w: 70 }, 140: { w: 98 }, 180: { w: 126 } }
+          },
+          {
+            name: 'Square310x310.scale-%s.png',
+            scales: { 80: { w: 248 }, 100: { w: 310 }, 140: { w: 434 }, 180: { w: 558 } }
+          },
+          {
+            name: 'Square30x30.scale-%s.png',
+            scales: { 80: { w: 24 }, 100: { w: 30 }, 140: { w: 42 }, 180: { w: 54 } }
+          },
+          {
+            name: 'Square30x30.targetsize-%s.png',
+            scales: { 16: { w: 16 }, 32: { w: 32 }, 48: { w: 48 }, 256: { w: 256 } }
+          },
+          {
+            name: 'SplashScreen.scale-%s.png',
+            scales: { 100: { w: 620, h: 300 }, 140: { w: 868, h: 420 }, 180: { w: 1116, h: 540 } }
+          },
+        ]
+      },
+      {
+        title: 'Windows 8.1 Store App - Windows Phone',
+        description: 'tiles in various sizes and related scalings',
+        folder: 'WindowsApp.WindowsPhone',
+        sizes: [
+          {
+            name: 'Square71x71.scale-%s.png',
+            scales: { 100: { w: 71 }, 140: { w: 99 }, 240: { w: 170 } }
+          },
+          {
+            name: 'Square44x44.scale-%s.png',
+            scales: { 100: { w: 44 }, 140: { w: 62 }, 240: { w: 106 } }
+          },
+          {
+            name: 'SplashScreen.scale-%s.png',
+            scales: { 100: { w: 480, h: 800 }, 140: { w: 672, h: 1120 }, 240: { w: 1152, h: 1920 } }
+          },
         ]
       }
     ]
@@ -486,6 +518,7 @@
       var text = document.createElement('span')
 
       text.textContent = set.title
+      title.setAttribute('title', set.description)
       title.appendChild(setBox)
       title.appendChild(text)
 
