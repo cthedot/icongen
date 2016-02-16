@@ -479,7 +479,7 @@
       }
       saveAs(
         zip.generate({ type: 'blob' }),
-        'icons.zip'
+        'iconx.zip'
       );
     }
   }
