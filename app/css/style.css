@@ -6,7 +6,7 @@ body {
   font: normal 1em/1.6 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #eee;
   background: #334;
-  padding: 0 20px;
+  padding: 0 15px;
   margin: 0 auto;
 }
 
@@ -16,7 +16,10 @@ pre, code {
   padding: 0.4em;
 }
 pre {
-  padding: 0.9em 1.6em;
+  padding: 0.9em 15px;
+  margin-left: -15px;
+  margin-right: -15px;
+  white-space: pre-wrap;
 }
 a {
   color: inherit;
@@ -109,38 +112,48 @@ h4 {
   cursor: pointer;
   display: block;
   margin-bottom: 1px;
+  transition: 0.2s;
 }
 
+.selection .legacy {
+  opacity: 0.6;
+}
 .selection input[type=checkbox] {
   position: absolute;
   left: -100vw;
 }
 
 .selection label span {
+  font-weight: 600;
   position: relative;
   display: block;
-  padding: 0.4em 0.4em 0.4em 2.4em;
+  padding: 0.4em 2.4em 0.4em 0.8em;
+}
+.selection .legacy span {
+  font-weight: 400;
 }
 
   .selection label span:before {
-    border: 1px solid;
+    color: #000;
+    background: #fff;
     border-radius: 100%;
     content: "+";
-    height: 1.2em;
+    height: 1.5em;
     top: 0.5em;
-    left: 0.4em;
-    line-height: 1;
+    right: 0em;
+    line-height: 1.2;
     position: absolute;
     text-align: center;
-    width: 1.2em;
+    width: 1.5em;
   }
 
 .selection label:hover,
 .selection input[type=checkbox]:focus ~ span {
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 .selection input[type=checkbox]:checked ~ span:before {
+  font-weight: 200;
   content: '×';
 }
 
@@ -182,8 +195,12 @@ canvas {
   background: #000;
 }
 
-.output {
+.downloadable .output {
   display: block;
+}
+
+.output {
+  display: none;
   margin: 3.2em 0;
 }
 

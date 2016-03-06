@@ -7,6 +7,8 @@
   <title>icongen - Generate Web and App icons and PNG favicons</title>
   <link rel="stylesheet" href="css/style.css" type="text/css">
 
+  <link id="favicon" rel="icon" href="favicon.ico" type="image/x-icon">
+
   <link rel="icon" type="image/png" href="/iconx/favicon-16x16.png" sizes="16x16">
   <link rel="icon" type="image/png" href="/iconx/favicon-32x32.png" sizes="32x32">
   <link rel="icon" type="image/png" href="/iconx/android-128x128.png" sizes="128x128">
@@ -40,48 +42,35 @@
           <label for="files">Drop files or click to upload</label>
         </h2>
         <input id="files" type="file" class="files">
-        <label><input id="bg" placeholder="transparent" /> Background color</label>
+        <label>
+          Background color
+          <input id="bg" placeholder="transparent">
+        </label>
       </section>
-      <output class="output">
-        <h2><button id="download">Download as ZIP</button> after generation</h2>
-        <p>Please also add a <code>favicon.<em>ico</em></code> (not included!).</p>
-        <section id="list"></section>
-      </output>
     <section>
   </div>
+
+  <output class="output" id="output">
+    <h2>
+      <button id="download">Download all files as ZIP</button>
+    </h2>
+    <section id="list"></section>
+  </output>
 
 
   <hr />
 
   <section>
-    <h2>Some notes and links about using the icons</h2>
-    <h3>
-      Icons (Favicon, Chrome, Opera Coast, iOS, Edge on Windows 10, IE on Windows 8 and 8.1)<br />
-      More info about <a href="http://www.jonathantneal.com/blog/understand-the-favicon/">favicons</a>,
-      <a href="https://mathiasbynens.be/notes/touch-icons">touch icons</a>,
-      <a href="http://www.buildmypinnedsite.com/en">pinned sites</a> or look at alternatives like
-      <a href="http://realfavicongenerator.net/">realfavicongenerator.net</a>
-      <a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/MobileHIG/IconMatrix.html#//apple_ref/doc/uid/TP40006556-CH27-SW2">developer.apple.com</a> <a href="https://mathiasbynens.be/notes/touch-icons">Touch Icons</a> etc.
-    </h3>
-    <h4>Basic setup (Android, IE/Edge, iOS):</h4>
-    <pre>
+    <h2>Basic HTML (Browser, Android, iOS, Edge/IE):</h2>
+    <pre id="htmlhead">
 &lt;link rel="icon" type="image/png" href="/iconx/favicon-16x16.png" sizes="16x16">
 &lt;link rel="icon" type="image/png" href="/iconx/favicon-32x32.png" sizes="32x32">
-
-&lt;link rel="icon" type="image/png" href="/iconx/android-128x128.png" sizes="128x128">
-&lt;link rel="icon" type="image/png" href="/iconx/android-196x196.png" sizes="196x196">
-
-&lt;meta name="msapplication-config" content="/iconx/browserconfig.xml" />
-
+&lt;link rel="icon" type="image/png" href="/iconx/android-192x192.png" sizes="192x192">
 &lt;link rel="apple-touch-icon" href="/iconx/apple-touch-icon-180x180.png" sizes="180x180">
-
-
-&lt!--
-  &lt;meta name="msapplication-TileColor" content="#550000">
-  &lt;meta name="msapplication-TileImage" content="/iconx/mstile-144x144.png">
---></pre>
-    <h4><a href="http://msdn.microsoft.com/en-us/library/ie/dn455106%28v=vs.85%29.aspx">browserconfig.xml for IE (Windows 8.1) and Edge</a></h4>
-    <pre>
+&lt;meta name="msapplication-config" content="/iconx/browserconfig.xml">
+</pre>
+    <h3><a href="http://msdn.microsoft.com/en-us/library/ie/dn455106%28v=vs.85%29.aspx">browserconfig.xml for Edge (Windows 10) and IE (on Windows 8.1)</a></h3>
+    <pre id="browserconfig">
 &lt;?xml version="1.0" encoding="utf-8" ?>
 &lt;browserconfig>
   &lt;msapplication>
@@ -90,16 +79,23 @@
     &lt;square150x150logo src="/iconx/browserconfig/tile150x150.png" />
     &lt;wide310x150logo src="/iconx/browserconfig/tile310x150.png" />
     &lt;square310x310logo src="/iconx/browserconfig/tile310x310.png" />
-    &lt;tilecolor>#550000&lt;/tilecolor>
+    &lt;tilecolor>transparent&lt;/tilecolor>
     &lt;/tile>
   &lt;/msapplication>
 &lt;/browserconfig>
     </pre>
-    <h3>Firefox OS and apps</h3>
-    <p>
-      See the <a href="https://developer.mozilla.org/en-US/Apps/Build/Manifest#icons">Firefox docs</a>
-    </p>
+    <h2>Some notes and links about using the icons</h2>
+    <h3>
+      Icons (Favicon, Chrome, Opera Coast, iOS, Edge on Windows 10, IE on Windows 8 and 8.1)<br />
+      More info about <a href="http://www.jonathantneal.com/blog/understand-the-favicon/">favicons</a>,
+      <a href="https://mathiasbynens.be/notes/touch-icons">touch icons</a>,
+      <a href="http://www.buildmypinnedsite.com/en">pinned sites</a> or look at alternatives like
+      <a href="http://realfavicongenerator.net/">realfavicongenerator.net</a>
+      <a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/MobileHIG/IconMatrix.html#//apple_ref/doc/uid/TP40006556-CH27-SW2">developer.apple.com</a> <a href="https://mathiasbynens.be/notes/touch-icons">Touch Icons</a>, <a href="https://developer.mozilla.org/en-US/Apps/Build/Manifest#icons">Firefox docs</a> etc.
+    </h3>
+    <p>Thanks to <a href="http://mrcoles.com/blog/making-images-byte-by-byte-javascript/">MrColes</a> for the .ico generation code.</p>
   </section>
+  <script src="scripts/favicon.js"></script>
   <script src="scripts/tools.js"></script>
   <script src="scripts/script.js"></script>
 </body>

@@ -9,28 +9,38 @@
     h: 100,
     sets: [
       {
-        title: 'favicon.png base',
-        description: '16x16 32x32',
+        title: 'favicon.ico',
+        description: '16x16 only, add to website root but do not add to HTML',
+        defaultSelected: true,
+        sizes: [
+          { w: 16, name: 'favicon.ico' },
+        ]
+      },
+      {
+        title: 'favicon.png',
+        description: '16x16 32x32(Safari OSX only)',
         defaultSelected: true,
         sizes: [
           { w: 16, name: 'favicon-16x16.png' },
           { w: 32, name: 'favicon-32x32.png' }
         ]
       }, {
-        title: 'Android for manifest.json',
-        description: '36x36(@0.75x) 48x48(@1x) 72x72(@1.5x) 96x96(@2x) 144x144(@3x) 192x192(@4x)',
+        title: 'Android Chrome',
+        description: '192x192',
         defaultSelected: true,
         sizes: [
-          { w: 36, name: 'android-36x36.png' },
-          { w: 48, name: 'android-48x48.png' },
-          { w: 72, name: 'android-72x72.png' },
-          { w: 96, name: 'android-96x96.png' },
-          { w: 144, name: 'android-144x144.png' },
           { w: 192, name: 'android-192x192.png' }
         ]
       }, {
-        title: 'IE on Windows 8.1/10 for browserconfig.xml',
-        description: '70x70(128x128) 150x150(270x270) 310x150(558x270) 310x310(558x558)',
+        title: 'iOS Safari',
+        description: '180x180(@3x)',
+        defaultSelected: true,
+        sizes: [
+          { w: 180, name: 'apple-touch-icon-180x180.png' }
+        ]
+      }, {
+        title: 'Edge/IE on Windows 10/8.1 with browserconfig.xml',
+        description: '70x70(128x128) 150x150(270x270) 310x150(558x270) 310x310(558x558) and browserconfig.xml',
         folder: 'browserconfig',
         defaultSelected: true,
         sizes: [
@@ -39,15 +49,7 @@
           { w: 558, h: 270, name: 'tile310x150.png' },
           { w: 558, name: 'tile310x310.png' },
         ]
-      }, {
-        title: 'iOS Safari base',
-        description: '180x180(@3x)',
-        defaultSelected: true,
-        sizes: [
-          { w: 180, name: 'apple-touch-icon-180x180.png' }
-        ]
-      },
-      {
+      },      {
         title: 'Windows 10 UWP Universal App for apps',
         description: 'tiles, store, badge and splashscreen to be included in the app',
         folder: 'Windows10',
@@ -105,10 +107,23 @@
           { w: 846, h: 468, name: 'Store-846x468.png' },
           { w: 2400, h: 1200, name: 'Store-2400x1200.png' }
         ]
+      }, {
+        title: 'Android for manifest.json',
+        description: '36x36(@0.75x) 48x48(@1x) 72x72(@1.5x) 96x96(@2x) 144x144(@3x) 192x192(@4x)',
+        defaultSelected: false,
+        sizes: [
+          { w: 36, name: 'android-36x36.png' },
+          { w: 48, name: 'android-48x48.png' },
+          { w: 72, name: 'android-72x72.png' },
+          { w: 96, name: 'android-96x96.png' },
+          { w: 144, name: 'android-144x144.png' },
+          { w: 192, name: 'android-192x192.png' }
+        ]
       },
       {
         title: 'favicon.png extended (browsers including Coast, etc.)',
         description: '48x48 64x64 96x96(Google TV) 128x128(Chrome Webstore) 256x256 228x228(Opera Coast)',
+        legacy: true,
         sizes: [
           { w: 48, name: 'favicon-48x48.png' },
           { w: 64, name: 'favicon-64x64.png' },
@@ -118,14 +133,9 @@
           { w: 228, name: 'coast-228x228.png' } // Coast
         ]
       }, {
-        title: 'Android extended',
-        description: '128x128',
-        sizes: [
-          { w: 128, name: 'android-128x128.png' }
-        ]
-      }, {
-        title: 'Firefox OS and Apps (actually defunct now)',
+        title: 'Firefox OS and Apps (legacy)',
         description: 'see https://developer.mozilla.org/en-US/Apps/Build/Manifest',
+        legacy: true,
         folder: 'FirefoxOS',
         sizes: [
           {
@@ -134,14 +144,16 @@
           }
         ]
       }, {
-        title: 'IE on Windows 8.0 (old)',
+        title: 'IE on Windows 8.0 (legacy)',
         description: '144x144',
+        legacy: true,
         sizes: [
           { w: 144, name: 'mstile-144x144.png' }
         ]
       }, {
-        title: 'iOS Safari extended (mostly not needed)',
-        description: '60x60(iOS6@1x) 76x76(@1x) 120x120(@2x) 152x152(iPad@2x) 167x167(iPadPro) ',
+        title: 'iOS Safari extended (legacy)',
+        description: '60x60(iOS6@1x) 76x76(@1x) 120x120(@2x) 152x152(iPad@2x) 167x167(iPadPro)',
+        legacy: true,
         sizes: [
           { w: 120, name: 'apple-touch-icon-120x120.png' },
           { w: 152, name: 'apple-touch-icon-152x152.png' },
@@ -153,7 +165,8 @@
       {
         title: 'Windows 8.1 Store App - Shared',
         folder: 'WindowsApp.Shared',
-        description: 'tiless, store, badge in various sizes and related scalings',
+        description: 'tiles, store, badge in various sizes and related scalings',
+        legacy: true,
         sizes: [
           {
             name: 'Square150x150.scale-%s.png',
@@ -176,6 +189,7 @@
       {
         title: 'Windows 8.1 Store App - Windows (desktop)',
         description: 'tiles, store, splashscreen in various sizes and related scalings',
+        legacy: true,
         folder: 'WindowsApp.Windows',
         sizes: [
           {
@@ -203,6 +217,7 @@
       {
         title: 'Windows 8.1 Store App - Windows Phone',
         description: 'tiles in various sizes and related scalings',
+        legacy: true,
         folder: 'WindowsApp.WindowsPhone',
         sizes: [
           {
@@ -233,6 +248,13 @@
   var dropzone = document.getElementById('dropzone')
   var fileinput = document.getElementById('files')
   var bginput = document.getElementById('bg')
+  var browserconfig = document.getElementById('browserconfig')
+  var browserconfigTpl = browserconfig.textContent.trim()
+
+  function updateBrowserconfig(color) {
+    browserconfig.textContent = browserconfigTpl.replace('transparent', color)
+  }
+
 
   dropzone.addEventListener('dragover', function (e) {
     e.preventDefault();
@@ -243,6 +265,7 @@
 
   bginput.addEventListener('change', function (e) {
     settings.background = e.target.value ? e.target.value : 'transparent'
+    updateBrowserconfig(settings.background)
   }, false)
 
   download.addEventListener('click', zipit, false)
@@ -297,12 +320,18 @@
     }
   }
 
+
   var max = 0
   var count = 0
 
   function loadImage(file, name) {
+
+    fileinput.value = null
+
+
     var img = new Image();
 
+    body.classList.remove('downloadable')
     body.classList.add('working')
     count = 0
     max = 0
@@ -318,9 +347,15 @@
       selectedSets.forEach(function (index) {
         var set = settings.sets[index]
         var settitle = document.createElement('h3');
+        var setdescription = document.createElement('p');
 
         settitle.textContent = set.title
         list.appendChild(settitle)
+
+        if (set.description) {
+          setdescription.textContent = set.description
+          list.appendChild(setdescription)
+        }
 
         set.sizes.forEach(function (size) {
           var scales = size.scales
@@ -348,8 +383,6 @@
               set.folder
             )
           }
-
-
         })
       })
     };
@@ -362,6 +395,9 @@
     count++
     if (count >= max) {
       body.classList.remove('working')
+      body.classList.add('downloadable')
+
+      location.hash = 'output'
     }
   }
 
@@ -414,16 +450,39 @@
   }
 
 
+  function genFavicon(name, folder) {
+    // expecting 16x16
+    var rows = []
+    var w = canvas.width
+    var row
+    var color
+
+    for (var y = canvas.height - 1; y >= 0; y--) {
+      rows.push(row = []);
+      for (var x = 0;  x < w; x++) {
+        color = ctx.getImageData(x, y, 1,1).data
+        row.push([color[0], color[1], color[2], color[3]])
+      }
+    }
+    return generateIcoDataURL(rows); // favicon.js
+  }
+
 
   function addtothumbslist(name, folder) {
     var thumb = new Image()
     var url = [] // dummy
 
-    try {
-      url = settings.png ? canvas.toDataURL() : canvas.toDataURL('image/jpeg', settings.quality)
+    if (name.indexOf('.ico') > -1) {
+      url = genFavicon(name, folder)
+      document.getElementById('favicon').href = url
     }
-    catch (e) {
-      console.log(e)
+    else {
+      try {
+        url = settings.png ? canvas.toDataURL() : canvas.toDataURL('image/jpeg', settings.quality)
+      }
+      catch (e) {
+        console.log(e)
+      }
     }
 
     thumb.src = url;
@@ -477,6 +536,13 @@
           { base64: true }
         );
       }
+
+      if ('browserconfig' in folders) {
+        target.file('browserconfig.xml', browserconfig.textContent);
+      }
+
+      target.file('_head.html', document.getElementById('htmlhead').textContent.trim());
+
       saveAs(
         zip.generate({ type: 'blob' }),
         'iconx.zip'
@@ -514,6 +580,7 @@
         selectedSets.push(i)
       }
 
+
       var title = document.createElement('label')
       var text = document.createElement('span')
 
@@ -521,6 +588,10 @@
       title.setAttribute('title', set.description)
       title.appendChild(setBox)
       title.appendChild(text)
+
+      if (set.legacy) {
+        title.classList.add('legacy')
+      }
 
       selection.appendChild(title)
     })
