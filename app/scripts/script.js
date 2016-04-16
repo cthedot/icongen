@@ -49,30 +49,30 @@
           { w: 558, h: 270, name: 'tile310x150.png' },
           { w: 558, name: 'tile310x310.png' },
         ]
-      },      {
+      }, {
         title: 'Windows 10 UWP Universal App for apps',
         description: 'tiles, store, badge and splashscreen to be included in the app',
         folder: 'Windows10',
         sizes: [
           {
             name: 'Square71x71Logo.scale-%s.png',
-            scales: { 400: { w: 284 }, 200: { w: 142 }, 100: { w: 71 }, 150: {  w: 107 }, 125: { w: 89 } }
+            scales: { 400: { w: 284 }, 200: { w: 142 }, 100: { w: 71 }, 150: { w: 107 }, 125: { w: 89 } }
           },
           {
             name: 'Square150x150Logo.scale-%s.png',
-            scales: { 400: { w: 600 }, 200: { w: 300 }, 100: { w: 150 }, 150: {  w: 225 }, 125: { w: 188 } }
+            scales: { 400: { w: 600 }, 200: { w: 300 }, 100: { w: 150 }, 150: { w: 225 }, 125: { w: 188 } }
           },
           {
             name: 'Wide310x150Logo.scale-%s.png',
-            scales: { 400: { w: 1240, h: 600 }, 200: { w: 620, h: 300 }, 100: { w: 310, h: 150 }, 150: {  w: 465, h: 225 }, 125: { w: 388, h: 188 } }
+            scales: { 400: { w: 1240, h: 600 }, 200: { w: 620, h: 300 }, 100: { w: 310, h: 150 }, 150: { w: 465, h: 225 }, 125: { w: 388, h: 188 } }
           },
           {
             name: 'Square310x310Logo.scale-%s.png',
-            scales: { 400: { w: 1240 }, 200: { w: 620 }, 100: { w: 310 }, 150: {  w: 465 }, 125: { w: 388 } }
+            scales: { 400: { w: 1240 }, 200: { w: 620 }, 100: { w: 310 }, 150: { w: 465 }, 125: { w: 388 } }
           },
           {
             name: 'Square44x44Logo.scale-%s.png',
-            scales: { 400: { w: 176 }, 200: { w: 88 }, 100: { w: 44 }, 150: {  w: 66 }, 125: { w: 55 } }
+            scales: { 400: { w: 176 }, 200: { w: 88 }, 100: { w: 44 }, 150: { w: 66 }, 125: { w: 55 } }
           },
           {
             name: 'Square44x44Logo.targetsize-%s.png',
@@ -80,11 +80,11 @@
           },
           {
             name: 'StoreLogo.scale-%s.png',
-            scales: { 400: { w: 200 }, 200: { w: 100 }, 150: {  w: 75 }, 125: { w: 63 }, 100: { w: 50 } }
+            scales: { 400: { w: 200 }, 200: { w: 100 }, 150: { w: 75 }, 125: { w: 63 }, 100: { w: 50 } }
           },
           {
             name: 'BadgeLogo.scale-%s.png',
-            scales: { 400: { w: 96 }, 200: { w: 48 }, 150: {  w: 36 }, 125: { w: 30 }, 100: { w: 24 } }
+            scales: { 400: { w: 96 }, 200: { w: 48 }, 150: { w: 36 }, 125: { w: 30 }, 100: { w: 24 } }
           },
           {
             name: 'SplashScreen.scale-%s.png',
@@ -405,7 +405,7 @@
     var dimensions = resize(
       img.width || settings.w,
       img.height || settings.h,
-    w, h);
+      w, h);
 
     canvas.width = w;
     canvas.height = h;
@@ -459,8 +459,8 @@
 
     for (var y = canvas.height - 1; y >= 0; y--) {
       rows.push(row = []);
-      for (var x = 0;  x < w; x++) {
-        color = ctx.getImageData(x, y, 1,1).data
+      for (var x = 0; x < w; x++) {
+        color = ctx.getImageData(x, y, 1, 1).data
         row.push([color[0], color[1], color[2], color[3]])
       }
     }
