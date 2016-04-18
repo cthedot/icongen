@@ -79,6 +79,10 @@
             scales: { 256: { w: 256 }, 48: { w: 48 }, 24: { w: 24 }, 16: { w: 16 } }
           },
           {
+            name: 'Square44x44Logo.targetsize-%s_altform-unplated.png',
+            scales: { 256: { w: 256 }, 48: { w: 48 }, 24: { w: 24 }, 16: { w: 16 } }
+          },
+          {
             name: 'StoreLogo.scale-%s.png',
             scales: { 400: { w: 200 }, 200: { w: 100 }, 150: { w: 75 }, 125: { w: 63 }, 100: { w: 50 } }
           },
