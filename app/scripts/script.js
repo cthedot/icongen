@@ -24,12 +24,13 @@
           { w: 16, name: 'favicon-16x16.png' },
           { w: 32, name: 'favicon-32x32.png' }
         ]
-      }, {
-        title: 'Android Chrome',
-        description: '192x192',
+      }, { // https://github.com/GoogleChrome/lighthouse/issues/291
+        title: 'Progressive Web App (e.g. Android Chrome)',
+        description: '192x192 512x512',
         defaultSelected: true,
         sizes: [
-          { w: 192, name: 'android-192x192.png' }
+          { w: 192, name: 'pwa-192x192.png' },
+          { w: 512, name: 'pwa-512x512.png' }
         ]
       }, {
         title: 'iOS Safari',
@@ -50,7 +51,7 @@
           { w: 558, name: 'tile310x310.png' },
         ]
       }, {
-        title: 'Windows 10 UWP Universal App for apps',
+        title: 'UWP Windows 10 Universal App for including in app',
         description: 'tiles, store, badge and splashscreen to be included in the app',
         folder: 'Windows10',
         sizes: [
@@ -97,7 +98,7 @@
         ]
       },
       {
-        title: 'Windows 10 UWP  for app store submission',
+        title: 'UWP Windows 10 Universal App for app store submission',
         description: 'icons for a store submission',
         folder: 'Windows10store',
         sizes: [
@@ -111,7 +112,7 @@
           { w: 846, h: 468, name: 'Store-846x468.png' },
           { w: 2400, h: 1200, name: 'Store-2400x1200.png' }
         ]
-      }, {
+      }, /*{
         title: 'Android for manifest.json',
         description: '36x36(@0.75x) 48x48(@1x) 72x72(@1.5x) 96x96(@2x) 144x144(@3x) 192x192(@4x)',
         defaultSelected: false,
@@ -121,9 +122,10 @@
           { w: 72, name: 'android-72x72.png' },
           { w: 96, name: 'android-96x96.png' },
           { w: 144, name: 'android-144x144.png' },
-          { w: 192, name: 'android-192x192.png' }
+          { w: 192, name: 'android-192x192.png' },
+          { w: 512, name: 'android-512x512.png' }
         ]
-      },
+      },*/
       {
         title: 'favicon.png extended (browsers including Coast, etc.)',
         description: '48x48 64x64 96x96(Google TV) 128x128(Chrome Webstore) 256x256 228x228(Opera Coast)',
