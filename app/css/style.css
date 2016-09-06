@@ -117,12 +117,8 @@ h4 {
 .selection label {
   cursor: pointer;
   display: block;
-  margin-bottom: 1px;
+  margin-bottom: 2px;
   transition: 0.2s;
-}
-
-.selection .legacy {
-  opacity: 0.6;
 }
 
 .selection input[type=checkbox] {
@@ -131,14 +127,20 @@ h4 {
 }
 
 .selection label span {
-  font-weight: 600;
+  font-weight: 700;
+  line-height: 1.4;
   position: relative;
   display: block;
-  padding: 0.4em 2.4em 0.4em 0.8em;
+  padding: 0.4em 2.4rem 0.6em 0.8rem;
+}
+.selection label small {
+  font-weight: 400;
+  display: block;
 }
 
-.selection .legacy span {
-  font-weight: 400;
+.selection .legacy {
+  font-weight: 600;
+  opacity: 0.6;
 }
 
 .selection label span:before {
@@ -148,7 +150,7 @@ h4 {
   content: "+";
   height: 1.5em;
   top: 0.5em;
-  right: 0em;
+  right: 0.4rem;
   line-height: 1.2;
   position: absolute;
   text-align: center;
@@ -157,7 +159,11 @@ h4 {
 
 .selection label:hover,
 .selection input[type=checkbox]:focus ~ span {
-  opacity: 0.8;
+  outline: 2px solid;
+}
+
+.selection input[type=checkbox]:focus ~ .legacy {
+  opacity: 1;
 }
 
 .selection input[type=checkbox]:checked ~ span:before {

@@ -51,7 +51,7 @@
           { w: 558, name: 'tile310x310.png' },
         ]
       }, {
-        title: 'UWP Windows 10 Universal App for including in app',
+        title: 'UWP Windows 10 Universal App',
         description: 'tiles, store, badge and splashscreen to be included in the app',
         folder: 'Windows10',
         sizes: [
@@ -98,7 +98,7 @@
         ]
       },
       {
-        title: 'UWP Windows 10 Universal App for app store submission',
+        title: 'UWP Windows 10 Universal App for store',
         description: 'icons for a store submission',
         folder: 'Windows10store',
         sizes: [
@@ -589,14 +589,16 @@
 
       var title = document.createElement('label')
       var text = document.createElement('span')
+      var description = document.createElement('small')
 
       text.textContent = set.title
-      title.setAttribute('title', set.description)
+      text.appendChild(description)
+      description.textContent = set.description
       title.appendChild(setBox)
       title.appendChild(text)
 
       if (set.legacy) {
-        title.classList.add('legacy')
+        text.classList.add('legacy')
       }
 
       selection.appendChild(title)
