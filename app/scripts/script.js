@@ -25,7 +25,7 @@
           { w: 32, name: 'favicon-32x32.png' }
         ]
       }, { // https://github.com/GoogleChrome/lighthouse/issues/291
-        title: 'Progressive Web App (e.g. Android Chrome)',
+        title: 'PWA Progressive Web Apps (e.g. Android Chrome)',
         description: '192x192 512x512',
         defaultSelected: true,
         sizes: [
