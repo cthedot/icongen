@@ -51,6 +51,18 @@
           { w: 558, name: 'tile310x310.png' },
         ]
       }, {
+        title: 'Android app',
+        description: '36x36 48x48 72x72 96x96 144x144 192x192',
+        defaultSelected: false,
+        sizes: [
+          { w: 36, name: 'android-36x36.png' },
+          { w: 48, name: 'android-48x48.png' },
+          { w: 72, name: 'android-72x72.png' },
+          { w: 96, name: 'android-96x196.png' },
+          { w: 144, name: 'android-144x144.png' },
+          { w: 192, name: 'android-192x192.png' }
+        ]
+      }, {
         title: 'UWP Windows 10 Universal App',
         description: 'tiles, store, badge and splashscreen to be included in the app',
         folder: 'Windows10',
