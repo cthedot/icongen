@@ -23,3 +23,6 @@ This tool works best in Firefox, Chrome or Microsoft Edge.
 On Windows 10 Mobile icon generation works, download not yet, hopefully soon as tool seems useful on mobile/Continuum.
 
 (In IE only a PNG or JPG upload seems to work. SVG upload causes problems when used on a canvas (plus the original SVG size is lost). This problem has been fixed in Edge.)
+
+
+(test)
