@@ -635,37 +635,57 @@
   }
   var selectedSets = []
 
-  var body = document.getElementById('body')
-  var canvas = document.getElementById('canvas')
-  var ctx = canvas.getContext('2d')
-    //var clear = document.getElementById('clear')
-  var download = document.getElementById('download')
-  var list = document.getElementById('list')
+  var $htmlhead = document.getElementById('htmlhead')
+  var $browserConfig = document.getElementById('browserconfig')
 
-  var dropzone = document.getElementById('dropzone')
-  var fileinput = document.getElementById('files')
-  var bginput = document.getElementById('bg')
-  var browserconfig = document.getElementById('browserconfig')
-  var browserconfigTpl = browserconfig.textContent.trim()
+  var htmlheadTpl = document.getElementById('htmlhead').textContent.trim()
+  var htmlhead = htmlheadTpl
 
-  function updateBrowserconfig(color) {
-    browserconfig.textContent = browserconfigTpl.replace('transparent', color)
-  }
+  var browserconfigTpl = $browserConfig.textContent.trim()
+  var browserconfig = browserconfigTpl
 
+  var $body = document.getElementById('body')
+  var $canvas = document.getElementById('canvas')
+  var ctx = $canvas.getContext('2d')
 
-  dropzone.addEventListener('dragover', function (e) {
-    e.preventDefault();
-  }, false);
-  dropzone.addEventListener('drop', getFiles, false);
-  fileinput.value = null
-  fileinput.addEventListener('change', getFiles, false);
+  var $download = document.getElementById('download')
+  var $list = document.getElementById('list')
 
-  bginput.addEventListener('change', function (e) {
-    settings.background = e.target.value ? e.target.value : 'transparent'
-    updateBrowserconfig(settings.background)
+  var $dropzone = document.getElementById('dropzone')
+  var $fileinput = document.getElementById('files')
+  var $bginput = document.getElementById('bg')
+  var $pathprefix = document.getElementById('pathprefix')
+
+  $bginput.value = ''
+  $pathprefix.value = '/iconx/'
+
+  $pathprefix.addEventListener('change', function(e) {
+    var pathprefix = e.currentTarget.value
+
+    htmlhead = htmlheadTpl.replace(/\/iconx\//g, pathprefix)
+    $htmlhead.innerText = htmlhead
+
+    browserconfig = browserconfigTpl.replace(/\/iconx\//g, pathprefix)
+    $browserConfig.innerText = browserconfig
   }, false)
 
-  download.addEventListener('click', zipit, false)
+  $dropzone.addEventListener('dragover', function (e) {
+    e.preventDefault();
+  }, false);
+  $dropzone.addEventListener('drop', getFiles, false);
+  $fileinput.value = null
+  $fileinput.addEventListener('change', getFiles, false);
+
+  $bginput.addEventListener('change', function (e) {
+    settings.background = e.target.value ? e.target.value : 'transparent'
+    $browserConfig.textContent = browserconfig.replace('transparent', settings.background)
+  }, false)
+
+  input.addEventListener('submit', function() {
+
+  }, false)
+
+  $download.addEventListener('click', zipit, false)
     //clear.addEventListener('click', clearThumbs, false)
 
   /*
@@ -689,7 +709,7 @@
   function getFiles(e) {
     e.preventDefault();
 
-    list.innerHTML = ''
+    $list.innerHTML = ''
 
     var files = e.dataTransfer ? e.dataTransfer.files : e.target.files
     var url = window.URL || window.webkitURL
@@ -722,14 +742,12 @@
   var count = 0
 
   function loadImage(file, name) {
-
-    fileinput.value = null
-
-
     var img = new Image();
 
-    body.classList.remove('downloadable')
-    body.classList.add('working')
+    $fileinput.value = null
+
+    $body.classList.remove('downloadable')
+    $body.classList.add('working')
     count = 0
     max = 0
 
@@ -739,7 +757,6 @@
       })
     })
 
-
     img.onload = function (e) {
       selectedSets.forEach(function (index) {
         var set = settings.sets[index]
@@ -747,11 +764,11 @@
         var setdescription = document.createElement('p');
 
         settitle.textContent = set.title
-        list.appendChild(settitle)
+        $list.appendChild(settitle)
 
         if (set.description) {
           setdescription.textContent = set.description
-          list.appendChild(setdescription)
+          $list.appendChild(setdescription)
         }
 
         set.sizes.forEach(function (size) {
@@ -761,7 +778,7 @@
             var scaletitle = document.createElement('h4');
 
             scaletitle.textContent = set.folder ? set.folder + '/' + size.name : size.name
-            list.appendChild(scaletitle)
+            $list.appendChild(scaletitle)
 
             for (var scale in scales) {
               genImage(
@@ -791,9 +808,8 @@
 
     count++
     if (count >= max) {
-      body.classList.remove('working')
-      body.classList.add('downloadable')
-
+      $body.classList.remove('working')
+      $body.classList.add('downloadable')
       location.hash = 'output'
     }
   }
@@ -804,8 +820,8 @@
       img.height || settings.h,
       w, h);
 
-    canvas.width = w;
-    canvas.height = h;
+    $canvas.width = w;
+    $canvas.height = h;
 
     if (settings.crop) {
       c.width = dimensions.w;
@@ -856,11 +872,11 @@
   function genFavicon(name, folder) {
     // expecting 16x16
     var rows = []
-    var w = canvas.width
+    var w = $canvas.width
     var row
     var color
 
-    for (var y = canvas.height - 1; y >= 0; y--) {
+    for (var y = $canvas.height - 1; y >= 0; y--) {
       rows.push(row = []);
       for (var x = 0; x < w; x++) {
         color = ctx.getImageData(x, y, 1, 1).data
@@ -881,7 +897,7 @@
     }
     else {
       try {
-        url = settings.png ? canvas.toDataURL() : canvas.toDataURL('image/jpeg', settings.quality)
+        url = settings.png ? $canvas.toDataURL() : $canvas.toDataURL('image/jpeg', settings.quality)
       }
       catch (e) {
         console.log(e)
@@ -890,7 +906,7 @@
 
     thumb.src = url;
     thumb.title = name + '<br>' +
-      canvas.width + '×' + canvas.height + ' @' +
+      $canvas.width + '×' + $canvas.height + ' @' +
       Math.round(url.length / 1000 * 100) / 100 + ' KB '
     thumb.setAttribute('data-filename', name);
     thumb.setAttribute('data-folder', folder ? folder : '');
@@ -903,27 +919,31 @@
     link.download = name;
     link.appendChild(thumb);
     link.appendChild(textlabel);
-
-    list.appendChild(link);
+    $list.appendChild(link);
   }
 
   function clearThumbs(e) {
-    list.innerHTML = ''
+    $list.innerHTML = ''
   }
 
 
   function zipit() {
     var zip = new JSZip();
-    var imgs = list.querySelectorAll('img');
+    var imgs = $list.querySelectorAll('img');
     var allimgs = imgs.length;
     var folders = {}
     var target = zip
+    var addBrowserconfig = false
 
     if (allimgs) {
       while (allimgs--) {
         var folder = imgs[allimgs].getAttribute('data-folder')
 
-        if (folder) {
+        if (folder === 'browserconfig') {
+          addBrowserconfig = true
+        }
+
+        if (folder && folder !== 'browserconfig') {
           if (!(folder in folders)) {
             folders[folder] = zip.folder(folder)
           }
@@ -941,23 +961,23 @@
         );
       }
 
-      if ('browserconfig' in folders) {
-        target.file('browserconfig.xml', browserconfig.textContent);
-      }
+      target.file('_head.html', htmlhead);
 
-      target.file('_head.html', document.getElementById('htmlhead').textContent.trim());
+      if (addBrowserconfig) {
+        target.file('browserconfig.xml', browserconfig);
+      }
 
       saveAs(
         zip.generate({
           type: 'blob'
         }),
-        'iconx.zip'
+        'icongen.zip'
       );
     }
   }
 
   function init() {
-    bginput.value = ''
+    $bginput.value = ''
 
     var selection = document.getElementById('selection')
 

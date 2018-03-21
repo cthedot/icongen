@@ -22,7 +22,7 @@
 <body id="body">
   <h1>icongen - Web and App icons and PNG favicons</h1>
   <p>
-    Generate Web and App Icons from a single source image locally in your browser. Ideally use an SVG image.
+    Generate Web and App Icons from a single source image locally in your browser. Ideally use an SVG image (needs a set width and height in SVG).
     <br />
     <a href="https://github.com/cthedot/icongen">icongen@github</a>.
   </p>
@@ -34,21 +34,58 @@
 
   <div class="ui">
     <section class="selection">
-      <h2>Select icons to generate</h2>
+      <h2>Icons to generate</h2>
       <section id="selection"></section>
     </section>
 
     <section>
-      <section class="input" id="dropzone">
-        <h2>
-          <label for="files">Drop files or click to upload</label>
-        </h2>
-        <input id="files" type="file" class="files">
+      <form action="#" class="input" id="input">
+        <h2>Image and target path</h2>
         <label>
-          Background color
+          <span>Path prefix
+            <small>(optional, should start and end with <code>/</code>)</small>
+          </span>
+          <input id="pathprefix" value="/iconx/" placeholder="e.g. /iconx/">
+        </label>
+        <label>
+          <span>Background color
+            <small>(optional)</small>
+          </span>
           <input id="bg" placeholder="transparent">
         </label>
-      </section>
+        <h3>
+          <label for="files">Drop files or click to upload</label>
+        </h3>
+        <div id="dropzone">
+          <input id="files" type="file" class="files">
+        </div>
+      </form>
+      <hr>
+      <h2>Example HTML <code>&lt;head&gt;</code> to use icons</h2>
+      <pre id="htmlhead">
+&lt;link rel="icon" type="image/png" href="/iconx/favicon-16x16.png" sizes="16x16">
+&lt;link rel="icon" type="image/png" href="/iconx/favicon-32x32.png" sizes="32x32">
+&lt;link rel="icon" type="image/png" href="/iconx/android-192x192.png" sizes="192x192">
+&lt;link rel="apple-touch-icon" href="/iconx/apple-touch-icon-180x180.png" sizes="180x180">
+&lt;meta name="msapplication-config" content="/iconx/browserconfig.xml">
+</pre>
+      <h3>
+        <a href="http://msdn.microsoft.com/en-us/library/ie/dn455106%28v=vs.85%29.aspx">browserconfig.xml for Edge (Windows 10)</a>
+      </h3>
+      <pre id="browserconfig">
+&lt;?xml version="1.0" encoding="utf-8" ?>
+&lt;browserconfig>
+  &lt;msapplication>
+    &lt;tile>
+    &lt;square70x70logo src="/iconx/tile70x70.png" />
+    &lt;square150x150logo src="/iconx/tile150x150.png" />
+    &lt;wide310x150logo src="/iconx/tile310x150.png" />
+    &lt;square310x310logo src="/iconx/tile310x310.png" />
+    &lt;tilecolor>transparent&lt;/tilecolor>
+    &lt;/tile>
+  &lt;/msapplication>
+&lt;/browserconfig>
+    </pre>
       <section>
   </div>
 
@@ -63,39 +100,19 @@
   <hr />
 
   <section>
-    <h2>Basic HTML (Browser, Android, iOS, Edge/IE):</h2>
-    <pre id="htmlhead">
-&lt;link rel="icon" type="image/png" href="/iconx/favicon-16x16.png" sizes="16x16">
-&lt;link rel="icon" type="image/png" href="/iconx/favicon-32x32.png" sizes="32x32">
-&lt;link rel="icon" type="image/png" href="/iconx/android-192x192.png" sizes="192x192">
-&lt;link rel="apple-touch-icon" href="/iconx/apple-touch-icon-180x180.png" sizes="180x180">
-&lt;meta name="msapplication-config" content="/iconx/browserconfig.xml">
-</pre>
-    <h3><a href="http://msdn.microsoft.com/en-us/library/ie/dn455106%28v=vs.85%29.aspx">browserconfig.xml for Edge (Windows 10) and IE (on Windows 8.1)</a></h3>
-    <pre id="browserconfig">
-&lt;?xml version="1.0" encoding="utf-8" ?>
-&lt;browserconfig>
-  &lt;msapplication>
-    &lt;tile>
-    &lt;square70x70logo src="/iconx/browserconfig/tile70x70.png" />
-    &lt;square150x150logo src="/iconx/browserconfig/tile150x150.png" />
-    &lt;wide310x150logo src="/iconx/browserconfig/tile310x150.png" />
-    &lt;square310x310logo src="/iconx/browserconfig/tile310x310.png" />
-    &lt;tilecolor>transparent&lt;/tilecolor>
-    &lt;/tile>
-  &lt;/msapplication>
-&lt;/browserconfig>
-    </pre>
-    <h2>Some notes and links about using the icons</h2>
-    <h3>
-      Icons (Favicon, Chrome, Opera Coast, iOS, Edge on Windows 10, IE on Windows 8 and 8.1)<br />
-      More info about <a href="http://www.jonathantneal.com/blog/understand-the-favicon/">favicons</a>,
+
+    <h2>Background info how and when to use icons</h2>
+    <p>
+      <a href="http://www.jonathantneal.com/blog/understand-the-favicon/">favicons</a>,
       <a href="https://mathiasbynens.be/notes/touch-icons">touch icons</a>,
       <a href="http://www.buildmypinnedsite.com/en">pinned sites</a> or look at alternatives like
       <a href="http://realfavicongenerator.net/">realfavicongenerator.net</a>
-      <a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/MobileHIG/IconMatrix.html#//apple_ref/doc/uid/TP40006556-CH27-SW2">developer.apple.com</a> <a href="https://mathiasbynens.be/notes/touch-icons">Touch Icons</a>, <a href="https://developer.mozilla.org/en-US/Apps/Build/Manifest#icons">Firefox docs</a> etc.
-    </h3>
-    <p>Thanks to <a href="http://mrcoles.com/blog/making-images-byte-by-byte-javascript/">MrColes</a> for the .ico generation code.</p>
+      <a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/MobileHIG/IconMatrix.html#//apple_ref/doc/uid/TP40006556-CH27-SW2">developer.apple.com</a>
+      <a href="https://mathiasbynens.be/notes/touch-icons">Touch Icons</a>,
+      <a href="https://developer.mozilla.org/en-US/Apps/Build/Manifest#icons">Firefox docs</a> etc.
+    </p>
+    <p>Thanks to
+      <a href="http://mrcoles.com/blog/making-images-byte-by-byte-javascript/">MrColes</a> for the .ico generation code.</p>
   </section>
   <script src="scripts/favicon.js"></script>
   <script src="scripts/tools.js"></script>
