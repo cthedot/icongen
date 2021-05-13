@@ -79,7 +79,7 @@
           name: 'android-72x72.png'
         }, {
           w: 96,
-          name: 'android-96x196.png'
+          name: 'android-96x96.png'
         }, {
           w: 144,
           name: 'android-144x144.png'
