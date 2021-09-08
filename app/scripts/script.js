@@ -36,25 +36,43 @@
       },
       {
         // https://github.com/GoogleChrome/lighthouse/issues/291
-        title: 'PWA Progressive Web Apps (e.g. Android Chrome)',
-        description: '192x192 512x512',
+        title: 'PWA Progressive Web Apps',
+        description: '192x192 512x512 + maskable 192x192 512x512',
         defaultSelected: true,
         sizes: [
           {
             w: 192,
-            name: 'pwa-192x192.png'
+            name: 'android-chrome-192x192.png'
           },
           {
             w: 512,
-            name: 'pwa-512x512.png'
+            name: 'android-chrome-512x512.png'
+          },
+          {
+            w: 192,
+            name: 'android-chrome-maskable-192x192.png',
+            maskable: true
+          },
+          {
+            w: 512,
+            name: 'android-chrome-maskable-512x512.png',
+            maskable: true
           }
         ]
       },
       {
-        title: 'iOS Safari',
-        description: '180x180(@3x)',
+        title: 'apple touch icons',
+        description: '152x152 180x180 (same with not size info in name)',
         defaultSelected: true,
         sizes: [
+          {
+            w: 152,
+            name: 'apple-touch-icon-152x152.png'
+          },
+          {
+            w: 180,
+            name: 'apple-touch-icon.png'
+          },
           {
             w: 180,
             name: 'apple-touch-icon-180x180.png'
@@ -62,28 +80,17 @@
         ]
       },
       {
-        title: 'Edge/IE on Windows 10/8.1 with browserconfig.xml',
-        description:
-          '70x70(128x128) 150x150(270x270) 310x150(558x270) 310x310(558x558) and browserconfig.xml',
-        folder: 'browserconfig',
+        title: 'ms icons',
+        description: '144x144 150x150',
         defaultSelected: true,
         sizes: [
           {
-            w: 128,
-            name: 'tile70x70.png'
+            w: 144,
+            name: 'msapplication-icon-144x144.png'
           },
           {
-            w: 270,
-            name: 'tile150x150.png'
-          },
-          {
-            w: 558,
-            h: 270,
-            name: 'tile310x150.png'
-          },
-          {
-            w: 558,
-            name: 'tile310x310.png'
+            w: 150,
+            name: 'mstile-150x150.png'
           }
         ]
       },
@@ -119,10 +126,38 @@
         ]
       },
       {
+        title: 'Edge/IE on Windows 10/8.1 with browserconfig.xml',
+        description:
+          '70x70(128x128) 150x150(270x270) 310x150(558x270) 310x310(558x558) and browserconfig.xml',
+        folder: 'browserconfig',
+        legacy: true,
+        sizes: [
+          {
+            w: 128,
+            name: 'tile70x70.png'
+          },
+          {
+            w: 270,
+            name: 'tile150x150.png'
+          },
+          {
+            w: 558,
+            h: 270,
+            name: 'tile310x150.png'
+          },
+          {
+            w: 558,
+            name: 'tile310x310.png'
+          }
+        ]
+      },
+
+      {
         title: 'UWP Windows 10 Universal App',
         description:
           'tiles, store, badge and splashscreen to be included in the app',
         folder: 'Windows10',
+        legacy: true,
         sizes: [
           {
             name: 'Square71x71Logo.scale-%s.png',
@@ -334,6 +369,7 @@
         title: 'UWP Windows 10 Universal App for store',
         description: 'icons for a store submission',
         folder: 'Windows10store',
+        legacy: true,
         sizes: [
           {
             w: 358,
@@ -901,7 +937,7 @@
   }
 
   function genImage(img, size, name, folder) {
-    imagetocanvas(img, size.w, size.h || size.w, name, folder)
+    imagetocanvas(img, size.w, size.h || size.w, size.maskable, name, folder)
 
     count++
     if (count >= max) {
@@ -911,13 +947,14 @@
     }
   }
 
-  function imagetocanvas(img, w, h, name, folder) {
+  function imagetocanvas(img, w, h, maskable, name, folder) {
     var dimensions = resize(
       img.width || settings.w,
       img.height || settings.h,
       w,
       h
     )
+    var padding = maskable ? dimensions.w * 0.85 : 0
 
     $canvas.width = w
     $canvas.height = h
@@ -933,7 +970,13 @@
       ctx.fillRect(0, 0, w, h)
     }
 
-    ctx.drawImage(img, dimensions.x, dimensions.y, dimensions.w, dimensions.h)
+    ctx.drawImage(
+      img,
+      dimensions.x + padding,
+      dimensions.y + padding,
+      dimensions.w - 2 * padding,
+      dimensions.h - 2 * padding
+    )
     addtothumbslist(name, folder)
   }
 
