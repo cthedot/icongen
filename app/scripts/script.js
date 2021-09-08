@@ -1,4 +1,4 @@
-﻿;(function () {
+﻿; (function () {
   'use strict'
 
   var settings = {
@@ -823,7 +823,7 @@
     false
   )
 
-  input.addEventListener('submit', function () {}, false)
+  input.addEventListener('submit', function () { }, false)
 
   $download.addEventListener('click', zipit, false)
   //clear.addEventListener('click', clearThumbs, false)

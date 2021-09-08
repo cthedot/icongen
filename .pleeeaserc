@@ -1,6 +1,0 @@
-{
-  "in": ["app/css/style.css"],
-  "out": "app/css/style.min.css",
-  "browsers": ["last 3 versions", "Android 2.3"],
-  "sourcemaps": true
-}
