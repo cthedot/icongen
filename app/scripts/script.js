@@ -2,7 +2,6 @@
   'use strict'
 
   var settings = {
-    crop: false,
     background: 'transparent',
     png: true,
     w: 100,
@@ -948,56 +947,48 @@
   }
 
   function imagetocanvas(img, w, h, maskable, name, folder) {
-    var dimensions = resize(
-      img.width || settings.w,
-      img.height || settings.h,
-      w,
-      h
-    )
-    var padding = maskable ? dimensions.w * 0.85 : 0
-
     $canvas.width = w
     $canvas.height = h
-
-    if (settings.crop) {
-      c.width = dimensions.w
-      c.height = dimensions.h
-      dimensions.x = 0
-      dimensions.y = 0
-    }
     if (settings.background !== 'transparent') {
       ctx.fillStyle = settings.background
       ctx.fillRect(0, 0, w, h)
     }
 
+    var dimensions = resize(
+      img.width || settings.w,
+      img.height || settings.h,
+      w,
+      h,
+      maskable ? 0.85 : 1
+    )  
     ctx.drawImage(
       img,
-      dimensions.x + padding,
-      dimensions.y + padding,
-      dimensions.w - 2 * padding,
-      dimensions.h - 2 * padding
+      dimensions.x,
+      dimensions.y,
+      dimensions.w,
+      dimensions.h
     )
     addtothumbslist(name, folder)
   }
 
-  function resize(imagewidth, imageheight, thumbwidth, thumbheight) {
+  function resize(imagewidth, imageheight, targetwidth, targetheight, scale) {
     var w = 0
     var h = 0
     var x = 0
     var y = 0
-    var widthratio = imagewidth / thumbwidth
-    var heightratio = imageheight / thumbheight
+    var widthratio = imagewidth / targetwidth
+    var heightratio = imageheight / targetheight
     var maxratio = Math.max(widthratio, heightratio)
 
     if (maxratio > 1) {
-      w = imagewidth / maxratio
-      h = imageheight / maxratio
+      w = imagewidth / maxratio * scale
+      h = imageheight / maxratio * scale
     } else {
       w = imagewidth
       h = imageheight
     }
-    x = (thumbwidth - w) / 2
-    y = (thumbheight - h) / 2
+    x = (targetwidth - w) / 2
+    y = (targetheight - h) / 2
 
     return {
       w: w,
