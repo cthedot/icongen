@@ -116,10 +116,10 @@ button:focus {
     justify-content: space-between;
   }
   .ui > * {
-    flex: 0 0 45%;
+    flex: 0 0 calc(40% - 2vw);
   }
-  .ui > *:first-child {
-    padding-right: 50px;
+  .ui > * + * {
+    flex: 0 0 calc(60% - 2vw);
   }
 }
 
@@ -194,13 +194,17 @@ h4 {
   background: #fff;
 }
 
+.input {
+  padding-bottom: 2em;
+}
+
 .input label,
 .input span {
   display: block;
 }
 
 .input label {
-  margin-top: 1.8em;
+  margin-top: 1em;
 }
 
 .input input[type="range"] {
@@ -214,7 +218,6 @@ h4 {
   cursor: copy;
   width: 100%;
   padding: 50px 10px;
-  margin-bottom: 1.6em;
 }
 
 .files:hover {

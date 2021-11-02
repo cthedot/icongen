@@ -19,21 +19,6 @@
         ]
       },
       {
-        title: 'favicon.png',
-        description: '16x16 32x32(Safari OSX only)',
-        defaultSelected: true,
-        sizes: [
-          {
-            w: 16,
-            name: 'favicon-16x16.png'
-          },
-          {
-            w: 32,
-            name: 'favicon-32x32.png'
-          }
-        ]
-      },
-      {
         // https://github.com/GoogleChrome/lighthouse/issues/291
         title: 'PWA Progressive Web Apps',
         description: '192x192 512x512 + maskable 192x192 512x512',
@@ -60,36 +45,13 @@
         ]
       },
       {
-        title: 'apple touch icons',
-        description: '152x152 180x180 (same with not size info in name)',
+        title: 'apple touch icon',
+        description: '180x180',
         defaultSelected: true,
         sizes: [
-          {
-            w: 152,
-            name: 'apple-touch-icon-152x152.png'
-          },
           {
             w: 180,
             name: 'apple-touch-icon.png'
-          },
-          {
-            w: 180,
-            name: 'apple-touch-icon-180x180.png'
-          }
-        ]
-      },
-      {
-        title: 'ms icons',
-        description: '144x144 150x150',
-        defaultSelected: true,
-        sizes: [
-          {
-            w: 144,
-            name: 'msapplication-icon-144x144.png'
-          },
-          {
-            w: 150,
-            name: 'mstile-150x150.png'
           }
         ]
       },
@@ -121,6 +83,36 @@
           {
             w: 192,
             name: 'android-192x192.png'
+          }
+        ]
+      },
+      {
+        title: 'OSX favicon.png',
+        description: '16x16 32x32(Safari OSX only)',
+        defaultSelected: false,
+        sizes: [
+          {
+            w: 16,
+            name: 'favicon-16x16.png'
+          },
+          {
+            w: 32,
+            name: 'favicon-32x32.png'
+          }
+        ]
+      },
+      {
+        title: 'ms icons',
+        description: '144x144 150x150',
+        defaultSelected: false,
+        sizes: [
+          {
+            w: 144,
+            name: 'msapplication-icon-144x144.png'
+          },
+          {
+            w: 150,
+            name: 'mstile-150x150.png'
           }
         ]
       },
@@ -761,11 +753,15 @@
   }
   var selectedSets = []
 
-  var $htmlhead = document.getElementById('htmlhead')
   var $browserConfig = document.getElementById('browserconfig')
-
-  var htmlheadTpl = document.getElementById('htmlhead').textContent.trim()
+  
+  var $htmlhead = document.getElementById('htmlhead')
+  var htmlheadTpl = $htmlhead.textContent.trim()
   var htmlhead = htmlheadTpl
+  
+  var $manifest = document.getElementById('manifest')
+  var manifestTpl = $manifest.textContent.trim()
+  var manifest = manifestTpl
 
   var browserconfigTpl = $browserConfig.textContent.trim()
   var browserconfig = browserconfigTpl
@@ -792,6 +788,9 @@
 
       htmlhead = htmlheadTpl.replace(/\/iconx\//g, pathprefix)
       $htmlhead.innerText = htmlhead
+
+      manifest = manifestTpl.replace(/\/iconx\//g, pathprefix)
+      $manifest.innerText = manifest
 
       browserconfig = browserconfigTpl.replace(/\/iconx\//g, pathprefix)
       $browserConfig.innerText = browserconfig

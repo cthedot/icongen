@@ -45,8 +45,19 @@
       </section>
 
       <section>
+        <h2>Image (SVG preferred) and target path</h2>
         <form action="#" class="input" id="input">
-          <h2>Image and target path</h2>
+          <label for="files">Drop files or click to upload</label>
+          <div id="dropzone">
+            <input id="files" type="file" class="files" />
+          </div>
+          <label>
+            <span
+              >Background color
+              <small>(optional)</small>
+            </span>
+            <input id="bg" placeholder="transparent" />
+          </label>
           <label>
             <span
               >Path prefix
@@ -56,34 +67,61 @@
             </span>
             <input id="pathprefix" value="/iconx/" placeholder="e.g. /iconx/" />
           </label>
-          <label>
-            <span
-              >Background color
-              <small>(optional)</small>
-            </span>
-            <input id="bg" placeholder="transparent" />
-          </label>
-          <h3>
-            <label for="files">Drop files or click to upload</label>
-          </h3>
-          <div id="dropzone">
-            <input id="files" type="file" class="files" />
-          </div>
         </form>
         <hr />
         <h2>Example HTML <code>&lt;head&gt;</code> to use icons</h2>
+        <p>
+          Use the given source SVG as <code>favicon.svg</code>. Add
+          <code>favicon.ico</code> to website root but do not add to HTML
+        </p>
         <pre id="htmlhead">
-&lt;link rel="icon" type="image/png" href="/iconx/favicon-16x16.png" sizes="16x16">
-&lt;link rel="icon" type="image/png" href="/iconx/favicon-32x32.png" sizes="32x32">
-&lt;link rel="icon" type="image/png" href="/iconx/android-192x192.png" sizes="192x192">
-&lt;link rel="apple-touch-icon" href="/iconx/apple-touch-icon-180x180.png" sizes="180x180">
-&lt;meta name="msapplication-config" content="/iconx/browserconfig.xml">
-</pre
+&lt;link rel="icon" href="/iconx/favicon.svg" type="image/svg+xml"&gt;
+&lt;link rel="apple-touch-icon" href="/iconx/apple-touch-icon.png"/&gt;
+&lt;link rel="manifest" href="/iconx/manifest.json" /&gt;</pre
+        >
+        <h3>SVG with dark mode option example</h3>
+        <pre>
+&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"&gt;
+  &lt;style&gt;
+    @media (prefers-color-scheme: dark) {
+      .icon { fill: #fff } 
+    }
+  &lt;/style&gt;
+  &lt;path class="icon" fill="#000" &hellip; /&gt;
+&lt;/svg&gt;</pre>
+        <h2>PWA manifest.json <code>icons</code> section</h2>
+        <pre id="manifest">
+&hellip;
+"icons": [
+  {
+      "src": "/iconx/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+  },
+  {
+      "src": "/iconx/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+  },
+  {
+    "src": "/iconx/android-chrome-maskable-192x192.png",
+    "sizes": "192x192",
+    "type": "image/png",
+    "purpose": "maskable"
+  },
+  {
+    "src": "/iconx/android-chrome-maskable-512x512.png",
+    "sizes": "512x512",
+    "type": "image/png",
+    "purpose": "maskable"
+  }
+], 
+&hellip;</pre
         >
         <h3>
           <a
             href="http://msdn.microsoft.com/en-us/library/ie/dn455106%28v=vs.85%29.aspx"
-            >browserconfig.xml for Edge (Windows 10)</a
+            >legacy browserconfig.xml for Edge (Windows 10)</a
           >
         </h3>
         <pre id="browserconfig">
@@ -116,6 +154,10 @@
     <section>
       <h2>Background info how and when to use icons</h2>
       <p>
+        <a
+          href="https://dev.to/masakudamatsu/favicon-nightmare-how-to-maintain-sanity-3al7"
+          >Definitive edition of "How to Favicon in 2021"</a
+        >
         <a href="http://www.jonathantneal.com/blog/understand-the-favicon/"
           >favicons</a
         >, <a href="https://mathiasbynens.be/notes/touch-icons">touch icons</a>,
