@@ -1,4 +1,4 @@
-﻿; (function () {
+﻿;(function () {
   'use strict'
 
   var settings = {
@@ -52,6 +52,34 @@
           {
             w: 180,
             name: 'apple-touch-icon.png'
+          }
+        ]
+      },
+      {
+        title:
+          'Ressources (icon/splash) https://github.com/ionic-team/capacitor-assets',
+        description: '1024x1024 2732x2732 864x864 + background',
+        defaultSelected: false,
+        sizes: [
+          {
+            w: 1024,
+            name: 'icon.png'
+          },
+          {
+            w: 2732,
+            name: 'splash.png'
+          },
+          {
+            w: 864,
+            // folder: 'android',
+            name: 'icon-background.png',
+            background: true
+          },
+          {
+            w: 864,
+            // folder: 'android',
+            name: 'icon-foreground.png',
+            transparent: true
           }
         ]
       },
@@ -754,11 +782,11 @@
   var selectedSets = []
 
   var $browserConfig = document.getElementById('browserconfig')
-  
+
   var $htmlhead = document.getElementById('htmlhead')
   var htmlheadTpl = $htmlhead.textContent.trim()
   var htmlhead = htmlheadTpl
-  
+
   var $manifest = document.getElementById('manifest')
   var manifestTpl = $manifest.textContent.trim()
   var manifest = manifestTpl
@@ -821,7 +849,7 @@
     false
   )
 
-  input.addEventListener('submit', function () { }, false)
+  input.addEventListener('submit', function () {}, false)
 
   $download.addEventListener('click', zipit, false)
   //clear.addEventListener('click', clearThumbs, false)
@@ -922,11 +950,20 @@
                 e.target,
                 scales[scale],
                 size.name.replace('%s', scale),
-                set.folder
+                set.folder || size.folder,
+                size.transparent,
+                size.background
               )
             }
           } else {
-            genImage(e.target, size, size.name || name, set.folder)
+            genImage(
+              e.target,
+              size,
+              size.name || name,
+              set.folder || size.folder,
+              size.transparent,
+              size.background
+            )
           }
         })
       })
@@ -934,8 +971,17 @@
     img.src = file
   }
 
-  function genImage(img, size, name, folder) {
-    imagetocanvas(img, size.w, size.h || size.w, size.maskable, name, folder)
+  function genImage(img, size, name, folder, transparent, background) {
+    imagetocanvas(
+      img,
+      size.w,
+      size.h || size.w,
+      size.maskable,
+      name,
+      folder,
+      transparent,
+      background
+    )
 
     count++
     if (count >= max) {
@@ -945,28 +991,32 @@
     }
   }
 
-  function imagetocanvas(img, w, h, maskable, name, folder) {
+  function imagetocanvas(
+    img,
+    w,
+    h,
+    maskable,
+    name,
+    folder,
+    transparent,
+    background
+  ) {
     $canvas.width = w
     $canvas.height = h
-    if (settings.background !== 'transparent') {
+    if (settings.background !== 'transparent' && !transparent) {
       ctx.fillStyle = settings.background
       ctx.fillRect(0, 0, w, h)
     }
-
-    var dimensions = resize(
-      img.width || settings.w,
-      img.height || settings.h,
-      w,
-      h,
-      maskable ? 0.85 : 1
-    )  
-    ctx.drawImage(
-      img,
-      dimensions.x,
-      dimensions.y,
-      dimensions.w,
-      dimensions.h
-    )
+    if (!background) {
+      var dimensions = resize(
+        img.width || settings.w,
+        img.height || settings.h,
+        w,
+        h,
+        maskable ? 0.85 : 1
+      )
+      ctx.drawImage(img, dimensions.x, dimensions.y, dimensions.w, dimensions.h)
+    }
     addtothumbslist(name, folder)
   }
 
@@ -980,8 +1030,8 @@
     var maxratio = Math.max(widthratio, heightratio)
 
     if (maxratio > 1) {
-      w = imagewidth / maxratio * scale
-      h = imageheight / maxratio * scale
+      w = (imagewidth / maxratio) * scale
+      h = (imageheight / maxratio) * scale
     } else {
       w = imagewidth
       h = imageheight
@@ -1047,7 +1097,7 @@
     var link = document.createElement('a')
     var textlabel = document.createElement('span')
 
-    textlabel.innerHTML = thumb.title
+    textlabel.innerHTML = (folder ? folder + '/' : '') + thumb.title
     link.href = url
     link.download = name
     link.appendChild(thumb)
